@@ -1,0 +1,675 @@
+<html>
+  <head>
+    <script>
+    <script>
+    <meta>
+    <link>
+    <meta>
+    <link>
+    <title>
+    <style>
+  <body>
+    <div id="root">
+      <div>
+        <div>
+          <a href="#motion">
+          <a href="#magic-ui">
+          <a href="#aceternity">
+          <a href="#react-bits">
+        <header>
+          <h1 text="Pack Shelf">
+          <p text="Freelancer pack lab — browsable gallery of animated components from Motion, Magic UI, Aceternity UI, and React Bits.">
+          <nav>
+            <a href="#motion">
+            <a href="#magic-ui">
+            <a href="#aceternity">
+            <a href="#react-bits">
+        <div>
+        <section id="motion">
+          <div>
+          <h2 text="01 — Motion">
+          <p text="Hand-written engine primitives using motion/react. Springs, layout animations, scroll-linked transforms, and presence transitions.">
+            <code text="motion/react">
+          <div>
+            <div>
+              <h3 text="Staggered Text">
+              <div>
+                <span text="Staggered">
+                <span text="Text">
+                <span text="Animation">
+                <span text="With">
+                <span text="Motion">
+            <div>
+              <h3 text="LayoutId Shared-Element Cards">
+              <div>
+                <div>
+                  <h3 text="Spring Physics">
+                  <p text="layoutId: alpha">
+                <div>
+                  <h3 text="Layout Animations">
+                  <p text="layoutId: beta">
+                <div>
+                  <h3 text="Gesture Handlers">
+                  <p text="layoutId: gamma">
+            <div>
+              <h3 text="Spring Loader">
+              <div>
+                <div>
+                <div>
+                <div>
+            <div>
+              <h3 text="Scroll-Linked Progress">
+              <div>
+                <div>
+              <p text="Scroll the page to rotate and scale">
+            <div>
+              <h3 text="AnimatePresence Menu">
+              <div>
+                <button text="Open Menu">
+        <div>
+        <section id="magic-ui">
+          <h2 text="02 — Magic UI">
+          <p text="Free / MIT components from magicui.design. Copy-paste animated building blocks.">
+            <a href="https://magicui.design">
+          <div>
+            <div>
+              <h3 text="Marquee">
+              <div>
+                <div>
+                  <div>
+                    <span text="✦">
+                    <span text="Marquee">
+                  <div>
+                    <span text="✦">
+                    <span text="Border Beam">
+                  <div>
+                    <span text="✦">
+                    <span text="Blur Fade">
+                  <div>
+                    <span text="✦">
+                    <span text="Number Ticker">
+                  <div>
+                    <span text="✦">
+                    <span text="Shiny Button">
+                  <div>
+                    <span text="✦">
+                    <span text="Ripple">
+                  <div>
+                    <span text="✦">
+                    <span text="Orbiting Circles">
+                  <div>
+                    <span text="✦">
+                    <span text="Magic UI">
+                <div>
+                  <div>
+                    <span text="✦">
+                    <span text="Marquee">
+                  <div>
+                    <span text="✦">
+                    <span text="Border Beam">
+                  <div>
+                    <span text="✦">
+                    <span text="Blur Fade">
+                  <div>
+                    <span text="✦">
+                    <span text="Number Ticker">
+                  <div>
+                    <span text="✦">
+                    <span text="Shiny Button">
+                  <div>
+                    <span text="✦">
+                    <span text="Ripple">
+                  <div>
+                    <span text="✦">
+                    <span text="Orbiting Circles">
+                  <div>
+                    <span text="✦">
+                    <span text="Magic UI">
+                <div>
+                  <div>
+                    <span text="✦">
+                    <span text="Marquee">
+                  <div>
+                    <span text="✦">
+                    <span text="Border Beam">
+                  <div>
+                    <span text="✦">
+                    <span text="Blur Fade">
+                  <div>
+                    <span text="✦">
+                    <span text="Number Ticker">
+                  <div>
+                    <span text="✦">
+                    <span text="Shiny Button">
+                  <div>
+                    <span text="✦">
+                    <span text="Ripple">
+                  <div>
+                    <span text="✦">
+                    <span text="Orbiting Circles">
+                  <div>
+                    <span text="✦">
+                    <span text="Magic UI">
+                <div>
+                  <div>
+                    <span text="✦">
+                    <span text="Marquee">
+                  <div>
+                    <span text="✦">
+                    <span text="Border Beam">
+                  <div>
+                    <span text="✦">
+                    <span text="Blur Fade">
+                  <div>
+                    <span text="✦">
+                    <span text="Number Ticker">
+                  <div>
+                    <span text="✦">
+                    <span text="Shiny Button">
+                  <div>
+                    <span text="✦">
+                    <span text="Ripple">
+                  <div>
+                    <span text="✦">
+                    <span text="Orbiting Circles">
+                  <div>
+                    <span text="✦">
+                    <span text="Magic UI">
+              <div>
+                <div>
+                  <div>
+                    <span text="◆">
+                    <span text="Marquee">
+                  <div>
+                    <span text="◆">
+                    <span text="Border Beam">
+                  <div>
+                    <span text="◆">
+                    <span text="Blur Fade">
+                  <div>
+                    <span text="◆">
+                    <span text="Number Ticker">
+                  <div>
+                    <span text="◆">
+                    <span text="Shiny Button">
+                  <div>
+                    <span text="◆">
+                    <span text="Ripple">
+                  <div>
+                    <span text="◆">
+                    <span text="Orbiting Circles">
+                  <div>
+                    <span text="◆">
+                    <span text="Magic UI">
+                <div>
+                  <div>
+                    <span text="◆">
+                    <span text="Marquee">
+                  <div>
+                    <span text="◆">
+                    <span text="Border Beam">
+                  <div>
+                    <span text="◆">
+                    <span text="Blur Fade">
+                  <div>
+                    <span text="◆">
+                    <span text="Number Ticker">
+                  <div>
+                    <span text="◆">
+                    <span text="Shiny Button">
+                  <div>
+                    <span text="◆">
+                    <span text="Ripple">
+                  <div>
+                    <span text="◆">
+                    <span text="Orbiting Circles">
+                  <div>
+                    <span text="◆">
+                    <span text="Magic UI">
+                <div>
+                  <div>
+                    <span text="◆">
+                    <span text="Marquee">
+                  <div>
+                    <span text="◆">
+                    <span text="Border Beam">
+                  <div>
+                    <span text="◆">
+                    <span text="Blur Fade">
+                  <div>
+                    <span text="◆">
+                    <span text="Number Ticker">
+                  <div>
+                    <span text="◆">
+                    <span text="Shiny Button">
+                  <div>
+                    <span text="◆">
+                    <span text="Ripple">
+                  <div>
+                    <span text="◆">
+                    <span text="Orbiting Circles">
+                  <div>
+                    <span text="◆">
+                    <span text="Magic UI">
+                <div>
+                  <div>
+                    <span text="◆">
+                    <span text="Marquee">
+                  <div>
+                    <span text="◆">
+                    <span text="Border Beam">
+                  <div>
+                    <span text="◆">
+                    <span text="Blur Fade">
+                  <div>
+                    <span text="◆">
+                    <span text="Number Ticker">
+                  <div>
+                    <span text="◆">
+                    <span text="Shiny Button">
+                  <div>
+                    <span text="◆">
+                    <span text="Ripple">
+                  <div>
+                    <span text="◆">
+                    <span text="Orbiting Circles">
+                  <div>
+                    <span text="◆">
+                    <span text="Magic UI">
+            <div>
+              <h3 text="Border Beam">
+              <div>
+                <h4 text="Animated Border">
+                <p text="A glowing beam animates around the card border using CSS offset-path.">
+                <div>
+            <div>
+              <h3 text="Blur Fade">
+              <div>
+                <div>
+                  <p text="Blur into view">
+                <div>
+                  <p text="Stagger each line">
+                <div>
+                  <p text="Smooth reveal">
+            <div>
+              <h3 text="Number Ticker">
+              <p text="Demo animation targets — not real metrics.">
+              <div>
+                <div>
+                  <span text="Value A">
+                  <div>
+                    <span text="1">
+                <div>
+                  <span text="Value B">
+                  <div>
+                    <span text="7">
+                <div>
+                  <span text="Value C">
+                  <div>
+                    <span text="42">
+            <div>
+              <h3 text="Shiny Button">
+              <div>
+                <button text="Get Started">
+                  <span text="Get Started">
+                  <span>
+                <button text="Learn More">
+                  <span text="Learn More">
+                  <span>
+            <div>
+              <h3 text="Ripple">
+              <div>
+                <div>
+                  <div>
+                  <div>
+                  <div>
+                  <div>
+                  <div>
+                  <div>
+                  <div>
+                  <div>
+            <div>
+              <h3 text="Orbiting Circles">
+              <div>
+                <span text="Orbit">
+                <svg>
+                  <circle>
+                <div>
+                  <span text="⚛️">
+                <svg>
+                  <circle>
+                <div>
+                  <span text="🎨">
+                <svg>
+                  <circle>
+                <div>
+                  <span text="✨">
+                <svg>
+                  <circle>
+                <div>
+                  <span text="🚀">
+                <svg>
+                  <circle>
+                <div>
+                  <span text="📦">
+                <svg>
+                  <circle>
+                <div>
+                  <span text="⚡">
+        <div>
+        <section id="aceternity">
+          <h2 text="03 — Aceternity UI">
+          <p text="Free documented components from ui.aceternity.com. Expressive animated blocks for dark interfaces.">
+            <a href="https://ui.aceternity.com">
+          <div>
+            <div>
+              <h3 text="Background Beams">
+              <div>
+                <div>
+                  <svg>
+                    <path>
+                    <path>
+                    <path>
+                    <path>
+                    <path>
+                    <path>
+                    <path>
+                    <path>
+                    <path>
+                    <path>
+                    <defs>
+                      <lineargradient id="linearGradient-0">
+                        <stop>
+                        <stop>
+                        <stop>
+                        <stop>
+                      <lineargradient id="linearGradient-1">
+                        <stop>
+                        <stop>
+                        <stop>
+                        <stop>
+                      <lineargradient id="linearGradient-2">
+                        <stop>
+                        <stop>
+                        <stop>
+                        <stop>
+                      <lineargradient id="linearGradient-3">
+                        <stop>
+                        <stop>
+                        <stop>
+                        <stop>
+                      <lineargradient id="linearGradient-4">
+                        <stop>
+                        <stop>
+                        <stop>
+                        <stop>
+                      <lineargradient id="linearGradient-5">
+                        <stop>
+                        <stop>
+                        <stop>
+                        <stop>
+                      <lineargradient id="linearGradient-6">
+                        <stop>
+                        <stop>
+                        <stop>
+                        <stop>
+                      <lineargradient id="linearGradient-7">
+                        <stop>
+                        <stop>
+                        <stop>
+                        <stop>
+                      <lineargradient id="linearGradient-8">
+                        <stop>
+                        <stop>
+                        <stop>
+                        <stop>
+                      <lineargradient id="linearGradient-9">
+                        <stop>
+                        <stop>
+                        <stop>
+                        <stop>
+                <p text="Ambient beam trails">
+            <div>
+              <h3 text="Card Hover Effect">
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <h4 text="Spring Physics">
+                      <p text="Physically-modeled spring animations with configurable stiffness, damping, and mass.">
+                <div>
+                  <div>
+                    <div>
+                      <h4 text="Layout Animations">
+                      <p text="Shared-element transitions using layoutId for seamless morphing between states.">
+                <div>
+                  <div>
+                    <div>
+                      <h4 text="Scroll Tracking">
+                      <p text="Scroll-linked transforms that respond to viewport position in real time.">
+                <div>
+                  <div>
+                    <div>
+                      <h4 text="Gesture System">
+                      <p text="Drag, hover, tap, and focus gesture handlers with animation integration.">
+                <div>
+                  <div>
+                    <div>
+                      <h4 text="Presence Transitions">
+                      <p text="AnimatePresence for enter/exit animations when components mount and unmount.">
+                <div>
+                  <div>
+                    <div>
+                      <h4 text="Variants">
+                      <p text="Declarative animation states that propagate through component trees.">
+            <div>
+              <h3 text="Typewriter Effect">
+              <div>
+                <div>
+                  <div>
+                    <span text="B">
+                    <span text="u">
+                    <span text="i">
+                    <span text="l">
+                    <span text="d">
+                  <div>
+                    <span text="b">
+                    <span text="e">
+                    <span text="a">
+                    <span text="u">
+                    <span text="t">
+                    <span text="i">
+                    <span text="f">
+                    <span text="u">
+                    <span text="l">
+                  <div>
+                    <span text="a">
+                    <span text="n">
+                    <span text="i">
+                    <span text="m">
+                    <span text="a">
+                    <span text="t">
+                    <span text="e">
+                    <span text="d">
+                  <div>
+                    <span text="i">
+                    <span text="n">
+                    <span text="t">
+                    <span text="e">
+                    <span text="r">
+                    <span text="f">
+                    <span text="a">
+                    <span text="c">
+                    <span text="e">
+                    <span text="s">
+                    <span text=".">
+                <span>
+            <div>
+              <h3 text="Bento Grid">
+              <div>
+                <div>
+                  <div>
+                  <div>
+                    <div>
+                    <div>
+                <div>
+                  <div>
+                  <div>
+                    <div>
+                    <div>
+                <div>
+                  <div>
+                  <div>
+                    <div>
+                    <div>
+                <div>
+                  <div>
+                  <div>
+                    <div>
+                    <div>
+            <div>
+              <h3 text="Moving Border">
+              <div>
+                <button text="Explore Packs">
+                <button text="View Source">
+        <div>
+        <section id="react-bits">
+          <h2 text="04 — React Bits">
+          <p text="Free components from reactbits.dev. Micro-interactions and text animations.">
+            <a href="https://reactbits.dev">
+          <div>
+            <div>
+              <h3 text="Split Text">
+              <span aria-label="Character-by-character spring reveal">
+                <span text="C">
+                <span text="h">
+                <span text="a">
+                <span text="r">
+                <span text="a">
+                <span text="c">
+                <span text="t">
+                <span text="e">
+                <span text="r">
+                <span text="-">
+                <span text="b">
+                <span text="y">
+                <span text="-">
+                <span text="c">
+                <span text="h">
+                <span text="a">
+                <span text="r">
+                <span text="a">
+                <span text="c">
+                <span text="t">
+                <span text="e">
+                <span text="r">
+                <span>
+                <span text="s">
+                <span text="p">
+                <span text="r">
+                <span text="i">
+                <span text="n">
+                <span text="g">
+                <span>
+                <span text="r">
+                <span text="e">
+                <span text="v">
+                <span text="e">
+                <span text="a">
+                <span text="l">
+            <div>
+              <h3 text="Blur Text">
+              <span>
+                <span text="Each">
+                <span text="word">
+                <span text="emerges">
+                <span text="from">
+                <span text="a">
+                <span text="gaussian">
+                <span text="blur">
+                <span text="into">
+                <span text="crisp">
+                <span text="focus">
+            <div>
+              <h3 text="Click Spark">
+              <div>
+                <canvas>
+                <div>
+                  <p text="Click anywhere in this area">
+                  <p text="Sparks fly on click">
+            <div>
+              <h3 text="Magnet">
+              <div>
+                <div>
+                  <button text="Magnetic Button">
+                <div>
+                  <div>
+                <div>
+                  <button text="Hover Me">
+            <div>
+              <h3 text="Count Up">
+              <p text="Demo animation targets — not real metrics.">
+              <div>
+                <div>
+                  <span text="Value X">
+                  <div>
+                    <span text="3">
+                <div>
+                  <span text="Value Y">
+                  <div>
+                    <span text="12">
+                <div>
+                  <span text="Value Z">
+                  <div>
+                    <span text="8">
+            <div>
+              <h3 text="Fade Content">
+              <div>
+                <div>
+                  <div>
+                    <p text="Fade from left">
+                <div>
+                  <div>
+                    <p text="Fade from right">
+                <div>
+                  <div>
+                    <p text="Fade from below">
+                <div>
+                  <div>
+                    <p text="Fade from above">
+            <div>
+              <h3 text="Animated List">
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <span text="●">
+                      <span text="New component added: Magnet">
+                  <div>
+                    <div>
+                      <span text="●">
+                      <span text="SplitText animation updated">
+                  <div>
+                    <div>
+                      <span text="●">
+                      <span text="ClickSpark v2 released">
+                  <div>
+                    <div>
+                      <span text="●">
+                      <span text="BlurText now supports RTL">
+                  <div>
+                    <div>
+                      <span text="●">
+                      <span text="FadeContent direction prop added">
+                  <div>
+                    <div>
+                      <span text="●">
+                      <span text="AnimatedList spring tuned">
+                  <div>
+                    <div>
+                      <span text="●">
+                      <span text="CountUp decimal support">
+        <footer>
+          <p text="Pack Shelf — freelancer animation lab. Source">
+            <a href="https://github.com/Dahhrk/pack-shelf">
+    <script>

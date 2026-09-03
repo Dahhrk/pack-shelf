@@ -104,28 +104,31 @@ export function ReactBitsSection() {
           </div>
         </div>
 
-        {/* Numbers: Count Up */}
+        {/* Numbers: Count Up — demo targets, not real metrics */}
         <div>
           <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Count Up
           </h3>
+          <p className="text-xs text-[#14161a]/40 mb-3">
+            Demo animation targets — not real metrics.
+          </p>
           <div className="flex gap-12 items-end">
             <div>
-              <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">Animations</span>
+              <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">Value X</span>
               <div className="text-5xl font-bold">
-                <CountUp to={247} />
+                <CountUp to={3} />
               </div>
             </div>
             <div>
-              <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">FPS</span>
+              <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">Value Y</span>
               <div className="text-5xl font-bold">
-                <CountUp to={60} />
+                <CountUp to={12} />
               </div>
             </div>
             <div>
-              <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">Bundle KB</span>
+              <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">Value Z</span>
               <div className="text-5xl font-bold">
-                <CountUp to={42} />
+                <CountUp to={8} />
               </div>
             </div>
           </div>

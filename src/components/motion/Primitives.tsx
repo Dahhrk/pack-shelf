@@ -3,6 +3,7 @@
 // License: MIT (this file)
 
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
+import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 const words = ["Staggered", "Text", "Animation", "With", "Motion"];
 
@@ -26,8 +27,11 @@ export function StaggeredText() {
 }
 
 export function ScrollProgress() {
+  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+
+  if (reduced) return null;
 
   return (
     <motion.div

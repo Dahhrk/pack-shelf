@@ -42,6 +42,7 @@ export function OrbitingCircles({
         </svg>
       )}
       <div
+        data-orbit
         style={
           {
             "--duration": duration,

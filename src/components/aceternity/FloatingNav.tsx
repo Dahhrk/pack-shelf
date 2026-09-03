@@ -72,7 +72,7 @@ export function FloatingNav({
                 "relative text-sm transition-colors",
                 isActive
                   ? "text-[#d9772e] font-bold"
-                  : "text-[#14161a]/60 hover:text-[#d9772e]",
+                  : "text-[#14161a]/60 hover:text-[#14161a]",
               )}
             >
               {item.name}
