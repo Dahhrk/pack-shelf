@@ -34,8 +34,6 @@ export function AuthForm() {
       const leftEyeCenter = { cx: 30, cy: 28 };
       const rightEyeCenter = { cx: 50, cy: 28 };
 
-      let isPeeking = false;
-
       function movePupilsToward(targetX: number, targetY: number) {
         if (reducedMotion) return;
         [
@@ -81,7 +79,6 @@ export function AuthForm() {
         rightLid.style.transition = "d 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)";
         leftLid.setAttribute("d", lidPath(leftEyeCenter, false));
         rightLid.setAttribute("d", lidPath(rightEyeCenter, false));
-        isPeeking = false;
       }
 
       function closeLids() {
@@ -94,7 +91,6 @@ export function AuthForm() {
 
       function peekLids() {
         if (reducedMotion) return;
-        isPeeking = true;
         leftLid.style.transition = "d 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)";
         rightLid.style.transition = "d 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)";
         leftLid.setAttribute("d", lidPath(leftEyeCenter, false, true));
