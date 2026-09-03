@@ -84,10 +84,10 @@ const pageContent: Record<PageId, { title: string; description: string; stats: {
 function Breadcrumb({ page }: { page: PageId }) {
   const item = sidebarItems.find((i) => i.id === page)!;
   return (
-    <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm text-zinc-400 mb-6">
+    <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm text-stone-400 mb-6">
       <span>Workspace</span>
       <ChevronRight className="w-3.5 h-3.5" />
-      <span className="text-zinc-200">{item.label}</span>
+      <span className="text-stone-200">{item.label}</span>
     </nav>
   );
 }
@@ -117,8 +117,8 @@ export function DashboardShell() {
               onClick={() => navigate(item.id)}
               className={`focus-ring w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
                 active
-                  ? "bg-zinc-800 text-zinc-100"
-                  : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
+                  ? "bg-stone-800 text-stone-100"
+                  : "text-stone-400 hover:text-stone-200 hover:bg-stone-800/50"
               }`}
               aria-current={active ? "page" : undefined}
             >
@@ -132,12 +132,12 @@ export function DashboardShell() {
   );
 
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900 overflow-hidden">
+    <div className="rounded-xl border border-stone-800 bg-stone-900 overflow-hidden">
       <div className="flex min-h-[480px]">
         {/* Desktop sidebar */}
         {!isMobile && (
-          <aside className="w-56 border-r border-zinc-800 p-4 shrink-0 hidden sm:block">
-            <div className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <aside className="w-56 border-r border-stone-800 p-4 shrink-0 hidden sm:block">
+            <div className="text-xs font-mono text-stone-500 uppercase tracking-widest mb-4">
               Navigation
             </div>
             {sidebarContent}
@@ -156,7 +156,7 @@ export function DashboardShell() {
                 onClick={() => setDrawerOpen(false)}
               />
               <motion.aside
-                className="fixed left-0 top-0 bottom-0 w-64 bg-zinc-900 border-r border-zinc-800 p-4 z-50"
+                className="fixed left-0 top-0 bottom-0 w-64 bg-stone-900 border-r border-stone-800 p-4 z-50"
                 initial={{ x: "-100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "-100%" }}
@@ -169,12 +169,12 @@ export function DashboardShell() {
                 }}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">
+                  <span className="text-xs font-mono text-stone-500 uppercase tracking-widest">
                     Navigation
                   </span>
                   <button
                     onClick={() => setDrawerOpen(false)}
-                    className="focus-ring p-1 rounded text-zinc-400 hover:text-zinc-200"
+                    className="focus-ring p-1 rounded text-stone-400 hover:text-stone-200"
                     aria-label="Close navigation"
                   >
                     <X className="w-4 h-4" />
@@ -191,7 +191,7 @@ export function DashboardShell() {
           {isMobile && (
             <button
               onClick={() => setDrawerOpen(true)}
-              className="focus-ring mb-4 p-2 rounded-lg border border-zinc-700 text-zinc-400 hover:text-zinc-200 sm:hidden"
+              className="focus-ring mb-4 p-2 rounded-lg border border-stone-700 text-stone-400 hover:text-stone-200 sm:hidden"
               aria-label="Open navigation"
             >
               <Menu className="w-5 h-5" />
@@ -209,18 +209,18 @@ export function DashboardShell() {
               transition={anim}
             >
               <h3 className="text-2xl font-bold mb-1">{content.title}</h3>
-              <p className="text-zinc-400 text-sm mb-8">{content.description}</p>
+              <p className="text-stone-400 text-sm mb-8">{content.description}</p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {content.stats.map((stat, i) => (
                   <motion.div
                     key={stat.label}
-                    className="rounded-lg border border-zinc-800 bg-zinc-950 p-4"
+                    className="rounded-lg border border-stone-800 bg-stone-950 p-4"
                     initial={reduced ? false : { opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={reduced ? { duration: 0 } : { delay: i * 0.06 }}
                   >
-                    <div className="text-xs text-zinc-500 mb-1">{stat.label}</div>
+                    <div className="text-xs text-stone-500 mb-1">{stat.label}</div>
                     <div className="text-xl font-bold">{stat.value}</div>
                   </motion.div>
                 ))}

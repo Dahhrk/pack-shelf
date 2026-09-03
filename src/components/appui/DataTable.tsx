@@ -31,7 +31,7 @@ interface RowData {
 const departments = ["Engineering", "Design", "Marketing", "Sales", "Support", "Finance", "Legal", "Operations"];
 const roles = ["Developer", "Designer", "Manager", "Analyst", "Lead", "Director", "Coordinator", "Specialist"];
 const statuses: RowData["status"][] = ["active", "away", "offline"];
-const firstNames = ["Avery", "Blake", "Casey", "Dana", "Ellis", "Finley", "Gray", "Harper", "Indigo", "Jordan", "Kai", "Lane", "Morgan", "Noel", "Oakley", "Parker", "Quinn", "Reese", "Sage", "Taylor"];
+const firstNames = ["Avery", "Blake", "Casey", "Dana", "Ellis", "Finley", "Gray", "Harper", "Iris", "Jordan", "Kai", "Lane", "Morgan", "Noel", "Oakley", "Parker", "Quinn", "Reese", "Sage", "Taylor"];
 const lastNames = ["Alden", "Brooks", "Chen", "Dubois", "Evans", "Farrow", "Grant", "Hayes", "Ishida", "Jennings", "Kim", "Larsen", "Moreno", "Nakamura", "Ortiz", "Patel", "Reeves", "Santos", "Torres", "Walsh"];
 
 function seededRandom(seed: number) {
@@ -64,9 +64,9 @@ function generateRows(count: number): RowData[] {
 }
 
 const statusColor: Record<RowData["status"], string> = {
-  active: "bg-emerald-500",
+  active: "bg-amber-500",
   away: "bg-amber-500",
-  offline: "bg-zinc-600",
+  offline: "bg-stone-600",
 };
 
 const columnHelper = createColumnHelper<RowData>();
@@ -96,7 +96,7 @@ export function DataTable() {
               onChange={table.getToggleAllRowsSelectedHandler()}
               aria-label="Select all rows"
             />
-            <div className="w-4 h-4 rounded border border-zinc-600 peer-checked:bg-emerald-500 peer-checked:border-emerald-500 flex items-center justify-center peer-focus-visible:ring-2 peer-focus-visible:ring-emerald-400 peer-focus-visible:ring-offset-1 peer-focus-visible:ring-offset-zinc-900">
+            <div className="w-4 h-4 rounded border border-stone-600 peer-checked:bg-amber-500 peer-checked:border-amber-500 flex items-center justify-center peer-focus-visible:ring-2 peer-focus-visible:ring-amber-400 peer-focus-visible:ring-offset-1 peer-focus-visible:ring-offset-stone-900">
               {table.getIsAllRowsSelected() && <Check className="w-3 h-3 text-white" />}
             </div>
           </label>
@@ -110,7 +110,7 @@ export function DataTable() {
               onChange={row.getToggleSelectedHandler()}
               aria-label={`Select row ${row.original.name}`}
             />
-            <div className="w-4 h-4 rounded border border-zinc-600 peer-checked:bg-emerald-500 peer-checked:border-emerald-500 flex items-center justify-center peer-focus-visible:ring-2 peer-focus-visible:ring-emerald-400 peer-focus-visible:ring-offset-1 peer-focus-visible:ring-offset-zinc-900">
+            <div className="w-4 h-4 rounded border border-stone-600 peer-checked:bg-amber-500 peer-checked:border-amber-500 flex items-center justify-center peer-focus-visible:ring-2 peer-focus-visible:ring-amber-400 peer-focus-visible:ring-offset-1 peer-focus-visible:ring-offset-stone-900">
               {row.getIsSelected() && <Check className="w-3 h-3 text-white" />}
             </div>
           </label>
@@ -168,17 +168,17 @@ export function DataTable() {
   const selectedCount = Object.keys(rowSelection).filter((k) => rowSelection[k]).length;
 
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900 overflow-hidden">
+    <div className="rounded-xl border border-stone-800 bg-stone-900 overflow-hidden">
       {/* Toolbar */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-800">
-        <div className="text-sm text-zinc-400">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-stone-800">
+        <div className="text-sm text-stone-400">
           {selectedCount > 0 ? (
-            <span className="text-emerald-400">{selectedCount} selected</span>
+            <span className="text-amber-400">{selectedCount} selected</span>
           ) : (
             <span>{rows.length} team members</span>
           )}
         </div>
-        <div className="text-xs text-zinc-500 font-mono">
+        <div className="text-xs text-stone-500 font-mono">
           Virtualized — {data.length} rows
         </div>
       </div>
@@ -191,19 +191,19 @@ export function DataTable() {
         aria-label="Team members table"
       >
         <table className="w-full border-collapse" style={{ width: table.getCenterTotalSize() }}>
-          <thead className="sticky top-0 z-10 bg-zinc-900/95 backdrop-blur-sm">
+          <thead className="sticky top-0 z-10 bg-stone-900/95 backdrop-blur-sm">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className="text-left text-xs font-mono text-zinc-500 uppercase tracking-wider px-3 py-3 border-b border-zinc-800 relative select-none"
+                    className="text-left text-xs font-mono text-stone-500 uppercase tracking-wider px-3 py-3 border-b border-stone-800 relative select-none"
                     style={{ width: header.getSize() }}
                   >
                     {header.isPlaceholder ? null : (
                       <button
                         className={`focus-ring flex items-center gap-1 ${
-                          header.column.getCanSort() ? "cursor-pointer hover:text-zinc-300" : ""
+                          header.column.getCanSort() ? "cursor-pointer hover:text-stone-300" : ""
                         }`}
                         onClick={header.column.getToggleSortingHandler()}
                         tabIndex={header.column.getCanSort() ? 0 : -1}
@@ -227,7 +227,7 @@ export function DataTable() {
                       <div
                         onMouseDown={header.getResizeHandler()}
                         onTouchStart={header.getResizeHandler()}
-                        className="absolute right-0 top-0 h-full w-1 cursor-col-resize select-none touch-none hover:bg-emerald-500/50"
+                        className="absolute right-0 top-0 h-full w-1 cursor-col-resize select-none touch-none hover:bg-amber-500/50"
                       />
                     )}
                   </th>
@@ -243,9 +243,9 @@ export function DataTable() {
                 <motion.tr
                   key={row.id}
                   data-index={virtualRow.index}
-                  className={`border-b border-zinc-800/50 hover:bg-zinc-800/30 transition-colors cursor-pointer ${
-                    row.getIsSelected() ? "bg-emerald-950/20" : ""
-                  } ${isOptimistic ? "bg-emerald-950/40" : ""}`}
+                  className={`border-b border-stone-800/50 hover:bg-stone-800/30 transition-colors cursor-pointer ${
+                    row.getIsSelected() ? "bg-amber-950/20" : ""
+                  } ${isOptimistic ? "bg-amber-950/40" : ""}`}
                   style={{
                     position: "absolute",
                     top: 0,
@@ -261,7 +261,7 @@ export function DataTable() {
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      className="px-3 py-2.5 text-sm text-zinc-300 whitespace-nowrap overflow-hidden text-ellipsis"
+                      className="px-3 py-2.5 text-sm text-stone-300 whitespace-nowrap overflow-hidden text-ellipsis"
                       style={{ width: cell.column.getSize() }}
                     >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -278,7 +278,7 @@ export function DataTable() {
       <AnimatePresence>
         {optimisticRow !== null && (
           <motion.div
-            className="absolute bottom-4 right-4 bg-emerald-600 text-white text-xs px-3 py-1.5 rounded-lg shadow-lg"
+            className="absolute bottom-4 right-4 bg-amber-600 text-white text-xs px-3 py-1.5 rounded-lg shadow-lg"
             initial={reduced ? false : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}

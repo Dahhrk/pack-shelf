@@ -142,7 +142,7 @@ No paid components are included. All components listed above were verified as fr
 - [TypeScript](https://www.typescriptlang.org) — type safety
 - [Tailwind CSS 3](https://tailwindcss.com) — utility styles
 - [Motion](https://motion.dev) (Framer Motion) — animation runtime — MIT
-- [DM Sans](https://fonts.google.com/specimen/DM+Sans) + [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) — typography
+- [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) + [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) — typography
 
 ### App UI Libraries
 
@@ -160,7 +160,7 @@ No paid components are included. All components listed above were verified as fr
 
 ## Accessibility
 
-- `prefers-reduced-motion: reduce` is honoured globally and per-component
+- `prefers-reduced-motion: reduce` kills all CSS animations/transitions outright (`animation: none; transition: none`); Motion JS animations check `useReducedMotion()` and set `duration: 0` / `initial={false}`
 - All interactive elements have visible `:focus-visible` rings (`.focus-ring` CSS utility)
 - Keyboard reachable throughout: tab, arrow, escape, enter
 - Overlays trap focus and close on Escape

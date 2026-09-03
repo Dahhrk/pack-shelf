@@ -57,9 +57,10 @@ export function TypewriterEffect({
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        // Blinking cursor: infinite because a text cursor blinks until dismissed
         transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
         className={cn(
-          "inline-block rounded-sm w-[4px] h-4 md:h-6 lg:h-10 bg-emerald-400",
+          "inline-block rounded-sm w-[4px] h-4 md:h-6 lg:h-10 bg-amber-400",
           cursorClassName,
         )}
       />

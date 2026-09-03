@@ -62,6 +62,7 @@ export function BackgroundBeams({ className }: { className?: string }) {
                 y1: ["0%", "100%"],
                 y2: ["0%", `${93 + Math.random() * 8}%`],
               }}
+              // Ambient background: beams drift continuously as a scene-setting effect
               transition={{
                 duration: Math.random() * 10 + 10,
                 ease: "easeInOut",
@@ -71,8 +72,8 @@ export function BackgroundBeams({ className }: { className?: string }) {
             >
               <stop stopColor="#18CCFC" stopOpacity="0" />
               <stop stopColor="#18CCFC" />
-              <stop offset="32.5%" stopColor="#6344F5" />
-              <stop offset="100%" stopColor="#AE48FF" stopOpacity="0" />
+              <stop offset="32.5%" stopColor="#F59E0B" />
+              <stop offset="100%" stopColor="#F97316" stopOpacity="0" />
             </motion.linearGradient>
           ))}
         </defs>

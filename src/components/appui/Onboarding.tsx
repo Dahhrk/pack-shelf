@@ -92,13 +92,13 @@ function CoachMark({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
     >
-      <div className="bg-emerald-600 text-white text-xs rounded-lg px-3 py-2 shadow-lg max-w-[220px] relative">
-        <div className="absolute -top-1.5 left-6 w-3 h-3 bg-emerald-600 rotate-45" />
+      <div className="bg-amber-600 text-white text-xs rounded-lg px-3 py-2 shadow-lg max-w-[220px] relative">
+        <div className="absolute -top-1.5 left-6 w-3 h-3 bg-amber-600 rotate-45" />
         <div className="flex items-start gap-2">
           <span className="flex-1">{text}</span>
           <button
             onClick={onDismiss}
-            className="focus-ring shrink-0 p-0.5 rounded hover:bg-emerald-500"
+            className="focus-ring shrink-0 p-0.5 rounded hover:bg-amber-500"
             aria-label="Dismiss coach mark"
           >
             <X className="w-3 h-3" />
@@ -156,23 +156,23 @@ export function Onboarding() {
   if (completed) {
     return (
       <motion.div
-        className="rounded-xl border border-zinc-800 bg-zinc-900 p-8 text-center"
+        className="rounded-xl border border-stone-800 bg-stone-900 p-8 text-center"
         initial={reduced ? false : { opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
       >
         <motion.div
-          className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4"
+          className="w-16 h-16 rounded-full bg-amber-500/20 flex items-center justify-center mx-auto mb-4"
           initial={reduced ? false : { scale: 0 }}
           animate={{ scale: 1 }}
           transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 200, delay: 0.2 }}
         >
-          <Check className="w-8 h-8 text-emerald-400" />
+          <Check className="w-8 h-8 text-amber-400" />
         </motion.div>
         <h4 className="text-xl font-bold mb-2">All set!</h4>
-        <p className="text-sm text-zinc-400 mb-6">Your workspace is configured and ready to use.</p>
+        <p className="text-sm text-stone-400 mb-6">Your workspace is configured and ready to use.</p>
         <button
           onClick={handleReset}
-          className="focus-ring px-4 py-2 rounded-lg border border-zinc-700 text-sm text-zinc-300 hover:bg-zinc-800 transition-colors"
+          className="focus-ring px-4 py-2 rounded-lg border border-stone-700 text-sm text-stone-300 hover:bg-stone-800 transition-colors"
         >
           Restart Demo
         </button>
@@ -181,11 +181,11 @@ export function Onboarding() {
   }
 
   return (
-    <div className="rounded-xl border border-zinc-800 bg-zinc-900 overflow-hidden relative" data-onboarding-container>
+    <div className="rounded-xl border border-stone-800 bg-stone-900 overflow-hidden relative" data-onboarding-container>
       {/* Progress bar */}
-      <div ref={progressRef} className="h-1 bg-zinc-800">
+      <div ref={progressRef} className="h-1 bg-stone-800">
         <motion.div
-          className="h-full bg-emerald-500"
+          className="h-full bg-amber-500"
           animate={{ width: `${progress}%` }}
           transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 200, damping: 25 }}
         />
@@ -201,12 +201,12 @@ export function Onboarding() {
             <div key={s.id} className="flex items-center gap-2">
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-xs transition-colors ${
-                  done ? "bg-emerald-500 text-white" : active ? "bg-zinc-700 text-zinc-200 ring-2 ring-emerald-500" : "bg-zinc-800 text-zinc-500"
+                  done ? "bg-amber-500 text-white" : active ? "bg-stone-700 text-stone-200 ring-2 ring-amber-500" : "bg-stone-800 text-stone-500"
                 }`}
               >
                 {done ? <Check className="w-4 h-4" /> : <Icon className="w-4 h-4" />}
               </div>
-              <span className={`text-xs hidden sm:inline ${active ? "text-zinc-200" : "text-zinc-500"}`}>
+              <span className={`text-xs hidden sm:inline ${active ? "text-stone-200" : "text-stone-500"}`}>
                 {s.title}
               </span>
             </div>
@@ -225,16 +225,16 @@ export function Onboarding() {
             transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 300, damping: 30 }}
           >
             <h4 className="text-lg font-bold mb-1">{step.title}</h4>
-            <p className="text-sm text-zinc-400 mb-6">{step.description}</p>
+            <p className="text-sm text-stone-400 mb-6">{step.description}</p>
             <div className="space-y-4 max-w-sm">
               {step.fields.map((field, fi) => (
                 <div key={field.label}>
-                  <label className="text-xs text-zinc-500 mb-1 block">{field.label}</label>
+                  <label className="text-xs text-stone-500 mb-1 block">{field.label}</label>
                   <input
                     ref={fi === 0 ? fieldRef : undefined}
                     type={field.type}
                     placeholder={field.placeholder}
-                    className="focus-ring w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 outline-none focus:border-emerald-500 transition-colors"
+                    className="focus-ring w-full bg-stone-800 border border-stone-700 rounded-lg px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 outline-none focus:border-amber-500 transition-colors"
                   />
                 </div>
               ))}
@@ -247,21 +247,21 @@ export function Onboarding() {
           <button
             onClick={handleBack}
             disabled={currentStep === 0}
-            className="focus-ring flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm text-zinc-400 hover:text-zinc-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="focus-ring flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm text-stone-400 hover:text-stone-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
           >
             <ArrowLeft className="w-4 h-4" /> Back
           </button>
           <div className="flex items-center gap-3">
             <button
               onClick={handleToggleCoachMarks}
-              className="focus-ring px-3 py-2 rounded-lg text-xs text-zinc-500 hover:text-zinc-300 border border-zinc-800 hover:border-zinc-700 transition-colors"
+              className="focus-ring px-3 py-2 rounded-lg text-xs text-stone-500 hover:text-stone-300 border border-stone-800 hover:border-stone-700 transition-colors"
             >
               {showCoachMarks ? "Hide Tips" : "Show Tips"}
             </button>
             <button
               ref={nextBtnRef}
               onClick={handleNext}
-              className="focus-ring flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-600 text-sm text-white hover:bg-emerald-500 transition-colors"
+              className="focus-ring flex items-center gap-1.5 px-4 py-2 rounded-lg bg-amber-600 text-sm text-white hover:bg-amber-500 transition-colors"
             >
               {currentStep === steps.length - 1 ? "Finish" : "Continue"}{" "}
               <ArrowRight className="w-4 h-4" />

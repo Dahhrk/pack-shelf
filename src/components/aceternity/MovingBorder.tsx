@@ -35,7 +35,7 @@ export function MovingBorder({
       </div>
       <div
         className={cn(
-          "relative flex h-full w-full items-center justify-center bg-zinc-950 text-sm antialiased backdrop-blur-xl",
+          "relative flex h-full w-full items-center justify-center bg-stone-950 text-sm antialiased backdrop-blur-xl",
           className,
         )}
         style={{ borderRadius: "999px" }}
@@ -116,7 +116,7 @@ export function MovingBorderButton({
     <motion.button
       ref={btnRef}
       className={cn(
-        "relative px-6 py-3 rounded-full text-sm font-medium text-emerald-300 border border-emerald-500/30",
+        "relative px-6 py-3 rounded-full text-sm font-medium text-amber-300 border border-amber-500/30",
         className,
       )}
       whileHover={{ scale: 1.05 }}

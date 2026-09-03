@@ -11,7 +11,9 @@ const animationProps = {
   animate: { "--x": "-100%", scale: 1 } as Record<string, string | number>,
   whileTap: { scale: 0.95 } as Record<string, number>,
   transition: {
-    repeat: Infinity,
+    // Sheen sweep: plays twice on mount then stops. A resting button
+    // does not need perpetual motion — interaction should re-trigger it.
+    repeat: 1,
     repeatType: "loop" as const,
     repeatDelay: 1,
     type: "spring" as const,

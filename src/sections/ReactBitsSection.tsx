@@ -35,17 +35,16 @@ export function ReactBitsSection() {
       <h2 className="text-3xl font-bold mb-2 text-rose-400 font-mono">
         04 — React Bits
       </h2>
-      <p className="text-zinc-400 mb-12 max-w-xl">
+      <p className="text-stone-400 mb-12 max-w-xl">
         Free components from{" "}
-        <a href="https://reactbits.dev" className="underline text-zinc-300" target="_blank" rel="noopener noreferrer">
+        <a href="https://reactbits.dev" className="underline text-stone-300" target="_blank" rel="noopener noreferrer">
           reactbits.dev
         </a>. Micro-interactions and text animations.
       </p>
 
       <div className="space-y-16">
-        {/* Text: Split Text */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Split Text
           </h3>
           <SplitText
@@ -54,9 +53,8 @@ export function ReactBitsSection() {
           />
         </div>
 
-        {/* Text: Blur Text */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Blur Text
           </h3>
           <BlurText
@@ -65,24 +63,22 @@ export function ReactBitsSection() {
           />
         </div>
 
-        {/* Interactive: Click Spark */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Click Spark
           </h3>
           <ClickSpark sparkColor="#fb7185" sparkCount={10}>
-            <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-12 text-center cursor-pointer select-none">
-              <p className="text-lg font-medium text-zinc-300">
+            <div className="rounded-xl bg-stone-900 border border-stone-800 p-12 text-center cursor-pointer select-none">
+              <p className="text-lg font-medium text-stone-300">
                 Click anywhere in this area
               </p>
-              <p className="text-sm text-zinc-500 mt-1">Sparks fly on click</p>
+              <p className="text-sm text-stone-500 mt-1">Sparks fly on click</p>
             </div>
           </ClickSpark>
         </div>
 
-        {/* Interactive: Magnet */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Magnet
           </h3>
           <div className="flex gap-6 items-center justify-center py-8">
@@ -97,33 +93,35 @@ export function ReactBitsSection() {
               </div>
             </Magnet>
             <Magnet>
-              <button className="px-6 py-3 bg-zinc-800 border border-zinc-700 rounded-xl font-medium">
+              <button className="px-6 py-3 bg-stone-800 border border-stone-700 rounded-xl font-medium">
                 Hover Me
               </button>
             </Magnet>
           </div>
         </div>
 
-        {/* Numbers: Count Up */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Count Up
           </h3>
+          <p className="text-xs text-stone-600 mb-4">
+            Animated number roll — values are component demo targets, not metrics.
+          </p>
           <div className="flex gap-12 items-end">
             <div>
-              <span className="text-xs text-zinc-500 uppercase tracking-wider">Animations</span>
+              <span className="text-xs text-stone-500 uppercase tracking-wider">Value A</span>
               <div className="text-5xl font-bold">
-                <CountUp to={247} />
+                <CountUp to={24} />
               </div>
             </div>
             <div>
-              <span className="text-xs text-zinc-500 uppercase tracking-wider">FPS</span>
+              <span className="text-xs text-stone-500 uppercase tracking-wider">Value B</span>
               <div className="text-5xl font-bold">
                 <CountUp to={60} />
               </div>
             </div>
             <div>
-              <span className="text-xs text-zinc-500 uppercase tracking-wider">Bundle KB</span>
+              <span className="text-xs text-stone-500 uppercase tracking-wider">Value C</span>
               <div className="text-5xl font-bold">
                 <CountUp to={42} />
               </div>
@@ -131,38 +129,36 @@ export function ReactBitsSection() {
           </div>
         </div>
 
-        {/* Scroll: Fade Content (multiple directions) */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Fade Content
           </h3>
           <div className="grid grid-cols-2 gap-4">
             <FadeContent direction="left" delay={0}>
-              <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6">
+              <div className="rounded-xl bg-stone-900 border border-stone-800 p-6">
                 <p className="font-medium">Fade from left</p>
               </div>
             </FadeContent>
             <FadeContent direction="right" delay={0.1}>
-              <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6">
+              <div className="rounded-xl bg-stone-900 border border-stone-800 p-6">
                 <p className="font-medium">Fade from right</p>
               </div>
             </FadeContent>
             <FadeContent direction="up" delay={0.2}>
-              <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6">
+              <div className="rounded-xl bg-stone-900 border border-stone-800 p-6">
                 <p className="font-medium">Fade from below</p>
               </div>
             </FadeContent>
             <FadeContent direction="down" delay={0.3}>
-              <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-6">
+              <div className="rounded-xl bg-stone-900 border border-stone-800 p-6">
                 <p className="font-medium">Fade from above</p>
               </div>
             </FadeContent>
           </div>
         </div>
 
-        {/* List: Animated List */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Animated List
           </h3>
           <div className="max-w-md">
@@ -170,7 +166,7 @@ export function ReactBitsSection() {
               items={listItems.map((item, i) => (
                 <div
                   key={i}
-                  className="mb-2 rounded-lg bg-zinc-900 border border-zinc-800 px-4 py-3 text-sm flex items-center gap-3"
+                  className="mb-2 rounded-lg bg-stone-900 border border-stone-800 px-4 py-3 text-sm flex items-center gap-3"
                 >
                   <span className="text-rose-400 text-lg">●</span>
                   <span>{item}</span>
@@ -178,7 +174,7 @@ export function ReactBitsSection() {
               ))}
             />
             {listItems.length < notifications.length && (
-              <p className="text-xs text-zinc-600 mt-2">Adding items...</p>
+              <p className="text-xs text-stone-600 mt-2">Adding items...</p>
             )}
           </div>
         </div>

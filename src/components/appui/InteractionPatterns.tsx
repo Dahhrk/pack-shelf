@@ -24,7 +24,7 @@ export function SharedLayoutTransition() {
 
   return (
     <div>
-      <div className="flex gap-1 p-1 rounded-lg bg-zinc-800 w-fit" role="tablist">
+      <div className="flex gap-1 p-1 rounded-lg bg-stone-800 w-fit" role="tablist">
         {layoutItems.map((item) => (
           <button
             key={item.id}
@@ -36,15 +36,15 @@ export function SharedLayoutTransition() {
             {activeTab === item.id && (
               <motion.div
                 layoutId="active-tab-bg"
-                className="absolute inset-0 bg-zinc-700 rounded-md"
+                className="absolute inset-0 bg-stone-700 rounded-md"
                 transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 30 }}
                 style={{ zIndex: -1 }}
               />
             )}
-            <span className={activeTab === item.id ? "text-zinc-100" : "text-zinc-400"}>
+            <span className={activeTab === item.id ? "text-stone-100" : "text-stone-400"}>
               {item.label}
             </span>
-            <span className={`ml-2 text-xs ${activeTab === item.id ? "text-emerald-400" : "text-zinc-600"}`}>
+            <span className={`ml-2 text-xs ${activeTab === item.id ? "text-amber-400" : "text-stone-600"}`}>
               {item.count}
             </span>
           </button>
@@ -53,7 +53,7 @@ export function SharedLayoutTransition() {
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
-          className="mt-4 p-4 rounded-lg border border-zinc-800 bg-zinc-900 text-sm text-zinc-400"
+          className="mt-4 p-4 rounded-lg border border-stone-800 bg-stone-900 text-sm text-stone-400"
           initial={reduced ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
@@ -80,7 +80,7 @@ const initialTasks = [
 const priorityColor: Record<string, string> = {
   high: "bg-rose-500",
   medium: "bg-amber-500",
-  low: "bg-zinc-600",
+  low: "bg-stone-600",
 };
 
 export function DragReorderList() {
@@ -89,7 +89,7 @@ export function DragReorderList() {
 
   return (
     <div>
-      <p className="text-xs text-zinc-500 mb-3">Drag to reorder tasks</p>
+      <p className="text-xs text-stone-500 mb-3">Drag to reorder tasks</p>
       <Reorder.Group
         axis="y"
         values={items}
@@ -100,14 +100,14 @@ export function DragReorderList() {
           <Reorder.Item
             key={item.id}
             value={item}
-            className="flex items-center gap-3 p-3 rounded-lg bg-zinc-800 border border-zinc-800 cursor-grab active:cursor-grabbing select-none"
+            className="flex items-center gap-3 p-3 rounded-lg bg-stone-800 border border-stone-800 cursor-grab active:cursor-grabbing select-none"
             whileDrag={{ scale: 1.02, boxShadow: "0 8px 32px rgba(0,0,0,0.3)" }}
             layout={!reduced ? "position" : undefined}
           >
-            <GripVertical className="w-4 h-4 text-zinc-600 shrink-0" />
+            <GripVertical className="w-4 h-4 text-stone-600 shrink-0" />
             <span className={`w-2 h-2 rounded-full ${priorityColor[item.priority]} shrink-0`} />
-            <span className="text-sm text-zinc-300 flex-1">{item.text}</span>
-            <span className="text-[10px] text-zinc-600 capitalize font-mono">{item.priority}</span>
+            <span className="text-sm text-stone-300 flex-1">{item.text}</span>
+            <span className="text-[10px] text-stone-600 capitalize font-mono">{item.priority}</span>
           </Reorder.Item>
         ))}
       </Reorder.Group>
@@ -118,7 +118,7 @@ export function DragReorderList() {
 /* ── Skeleton to Content Swap ── */
 
 function SkeletonLine({ w }: { w: string }) {
-  return <div className={`h-3 rounded bg-zinc-800 animate-pulse ${w}`} />;
+  return <div className={`h-3 rounded bg-stone-800 animate-pulse ${w}`} />;
 }
 
 interface CardData {
@@ -151,7 +151,7 @@ export function SkeletonSwap() {
     <div>
       <button
         onClick={handleToggle}
-        className="focus-ring mb-4 flex items-center gap-2 px-3 py-1.5 rounded-lg border border-zinc-700 text-xs text-zinc-400 hover:text-zinc-200 transition-colors"
+        className="focus-ring mb-4 flex items-center gap-2 px-3 py-1.5 rounded-lg border border-stone-700 text-xs text-stone-400 hover:text-stone-200 transition-colors"
       >
         <Loader2 className={`w-3.5 h-3.5 ${!loaded ? "animate-spin" : ""}`} />
         {loaded ? "Reload" : "Loading…"}
@@ -160,16 +160,16 @@ export function SkeletonSwap() {
         {(loaded ? cardData : Array(3).fill(null)).map((card, i) => (
           <motion.div
             key={loaded ? card!.name : `skeleton-${i}`}
-            className="p-4 rounded-lg border border-zinc-800 bg-zinc-900"
+            className="p-4 rounded-lg border border-stone-800 bg-stone-900"
             initial={reduced ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: loaded ? i * 0.1 : 0 }}
           >
             {card ? (
               <>
-                <div className="text-sm font-semibold text-zinc-200">{card.name}</div>
-                <div className="text-xs text-zinc-500 mt-0.5">{card.role}</div>
-                <div className="text-lg font-bold text-emerald-400 mt-2">{card.revenue}</div>
+                <div className="text-sm font-semibold text-stone-200">{card.name}</div>
+                <div className="text-xs text-stone-500 mt-0.5">{card.role}</div>
+                <div className="text-lg font-bold text-amber-400 mt-2">{card.revenue}</div>
               </>
             ) : (
               <div className="space-y-2.5">
@@ -194,15 +194,15 @@ export function ScrollLinkedSection() {
 
   return (
     <div>
-      <p className="text-xs text-zinc-500 mb-3">Scroll the container below</p>
-      <div className="rounded-xl border border-zinc-800 bg-zinc-900 overflow-hidden">
-        <div className="h-1 bg-zinc-800 relative">
-          <motion.div className="h-full bg-emerald-500 absolute left-0 top-0" style={{ width }} />
+      <p className="text-xs text-stone-500 mb-3">Scroll the container below</p>
+      <div className="rounded-xl border border-stone-800 bg-stone-900 overflow-hidden">
+        <div className="h-1 bg-stone-800 relative">
+          <motion.div className="h-full bg-amber-500 absolute left-0 top-0" style={{ width }} />
         </div>
         <div ref={containerRef} className="max-h-[200px] overflow-auto p-4 space-y-4">
           {Array.from({ length: 12 }, (_, i) => (
-            <div key={i} className="p-3 rounded-lg bg-zinc-800 border border-zinc-800">
-              <div className="text-sm text-zinc-300">Task #{i + 1}: {[
+            <div key={i} className="p-3 rounded-lg bg-stone-800 border border-stone-800">
+              <div className="text-sm text-stone-300">Task #{i + 1}: {[
                 "Set up project repository",
                 "Define color tokens",
                 "Build navigation component",
@@ -216,7 +216,7 @@ export function ScrollLinkedSection() {
                 "Accessibility review",
                 "Ship to production",
               ][i]}</div>
-              <div className="text-xs text-zinc-600 mt-1">Estimated: {(i + 1) * 2}h</div>
+              <div className="text-xs text-stone-600 mt-1">Estimated: {(i + 1) * 2}h</div>
             </div>
           ))}
         </div>

@@ -115,12 +115,12 @@ export function CommandPalette() {
       {/* Trigger */}
       <button
         onClick={toggle}
-        className="focus-ring flex items-center gap-3 w-full max-w-md mx-auto px-4 py-3 rounded-xl border border-zinc-700 bg-zinc-800/50 text-zinc-400 text-sm hover:border-zinc-600 hover:bg-zinc-800 transition-colors"
+        className="focus-ring flex items-center gap-3 w-full max-w-md mx-auto px-4 py-3 rounded-xl border border-stone-700 bg-stone-800/50 text-stone-400 text-sm hover:border-stone-600 hover:bg-stone-800 transition-colors"
         aria-label="Open command palette"
       >
         <Search className="w-4 h-4" />
         <span className="flex-1 text-left">Search commands…</span>
-        <kbd className="hidden sm:inline-flex items-center gap-0.5 rounded border border-zinc-700 bg-zinc-800 px-1.5 py-0.5 text-[10px] font-mono text-zinc-500">
+        <kbd className="hidden sm:inline-flex items-center gap-0.5 rounded border border-stone-700 bg-stone-800 px-1.5 py-0.5 text-[10px] font-mono text-stone-500">
           <span className="text-xs">⌘</span>K
         </kbd>
       </button>
@@ -145,33 +145,33 @@ export function CommandPalette() {
               transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 30 }}
             >
               <Command
-                className="rounded-xl border border-zinc-700 bg-zinc-900 shadow-2xl overflow-hidden"
+                className="rounded-xl border border-stone-700 bg-stone-900 shadow-2xl overflow-hidden"
                 loop
                 label="Command palette"
               >
-                <div className="flex items-center gap-3 px-4 border-b border-zinc-800">
-                  <Search className="w-4 h-4 text-zinc-500 shrink-0" />
+                <div className="flex items-center gap-3 px-4 border-b border-stone-800">
+                  <Search className="w-4 h-4 text-stone-500 shrink-0" />
                   <Command.Input
                     ref={inputRef}
                     value={search}
                     onValueChange={setSearch}
                     placeholder="Type a command or search…"
-                    className="focus-ring flex-1 bg-transparent py-3.5 text-sm text-zinc-100 placeholder:text-zinc-500 outline-none"
+                    className="focus-ring flex-1 bg-transparent py-3.5 text-sm text-stone-100 placeholder:text-stone-500 outline-none"
                   />
                   <kbd
-                    className="text-[10px] font-mono text-zinc-600 border border-zinc-700 rounded px-1 py-0.5 cursor-pointer hover:text-zinc-400"
+                    className="text-[10px] font-mono text-stone-600 border border-stone-700 rounded px-1 py-0.5 cursor-pointer hover:text-stone-400"
                     onClick={() => setOpen(false)}
                   >
                     ESC
                   </kbd>
                 </div>
                 <Command.List className="max-h-[320px] overflow-auto p-2">
-                  <Command.Empty className="py-8 text-center text-sm text-zinc-500">
+                  <Command.Empty className="py-8 text-center text-sm text-stone-500">
                     No results found.
                   </Command.Empty>
                   {Object.entries(groups).map(([group, items]) => (
                     <Command.Group key={group} heading={group} className="mb-2">
-                      <div className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest px-2 py-1.5">
+                      <div className="text-[10px] font-mono text-stone-600 uppercase tracking-widest px-2 py-1.5">
                         {group}
                       </div>
                       {items.map((item) => {
@@ -181,12 +181,12 @@ export function CommandPalette() {
                             key={item.id}
                             value={item.label}
                             onSelect={() => handleSelect(item.id)}
-                            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 cursor-pointer data-[selected=true]:bg-zinc-800 data-[selected=true]:text-zinc-100 transition-colors"
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-stone-300 cursor-pointer data-[selected=true]:bg-stone-800 data-[selected=true]:text-stone-100 transition-colors"
                           >
-                            <Icon className="w-4 h-4 text-zinc-500 shrink-0" />
+                            <Icon className="w-4 h-4 text-stone-500 shrink-0" />
                             <span className="flex-1">{item.label}</span>
                             {item.shortcut && (
-                              <kbd className="text-[10px] font-mono text-zinc-600">
+                              <kbd className="text-[10px] font-mono text-stone-600">
                                 {item.shortcut}
                               </kbd>
                             )}
@@ -206,7 +206,7 @@ export function CommandPalette() {
       <AnimatePresence>
         {lastAction && (
           <motion.div
-            className="mt-4 text-center text-sm text-emerald-400"
+            className="mt-4 text-center text-sm text-amber-400"
             initial={reduced ? false : { opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}

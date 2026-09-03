@@ -4,14 +4,20 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"DM Sans"', "system-ui", "sans-serif"],
+        sans: ['"Space Grotesk"', "sans-serif"],
         mono: ['"JetBrains Mono"', "monospace"],
       },
       animation: {
+        // Marquee: continuous scroll is the defining behaviour of a marquee strip.
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
-        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+        // Border beam: decorative shimmer — plays 3 times then stops.
+        // No state communicated; looping is not earned.
+        "border-beam": "border-beam calc(var(--duration)*1s) 3 linear",
+        // Ripple: ambient breathing loader — infinite because it indicates
+        // an ongoing background process / idle state.
         ripple: "ripple var(--duration,2s) ease calc(var(--i,0)*.2s) infinite",
+        // Orbit: planetary orbits do not stop. The demo visualises continuous motion.
         orbit: "orbit calc(var(--duration)*1s) linear infinite",
       },
       keyframes: {

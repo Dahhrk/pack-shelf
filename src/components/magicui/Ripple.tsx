@@ -21,7 +21,7 @@ export function Ripple({
   return (
     <div
       className={cn(
-        "absolute inset-0 flex items-center justify-center bg-zinc-950/5 [mask-image:linear-gradient(to_bottom,white,transparent)]",
+        "absolute inset-0 flex items-center justify-center bg-stone-950/5 [mask-image:linear-gradient(to_bottom,white,transparent)]",
         className,
       )}
     >
@@ -35,7 +35,7 @@ export function Ripple({
         return (
           <div
             key={i}
-            className="absolute animate-ripple rounded-full border bg-emerald-400/25"
+            className="absolute animate-ripple rounded-full border bg-amber-400/25"
             style={{
               width: `${size}px`,
               height: `${size}px`,
