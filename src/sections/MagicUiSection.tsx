@@ -14,7 +14,7 @@ const marqueeItems = [
 export function MagicUiSection() {
   return (
     <section id="magic-ui" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2 text-amber-600 font-mono">
+      <h2 className="text-3xl font-bold mb-2 text-amber-600">
         02 — Magic UI
       </h2>
       <p className="text-[#14161a]/60 mb-12 max-w-xl">
@@ -27,7 +27,7 @@ export function MagicUiSection() {
       <div className="space-y-16">
         {/* Text: Marquee */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Marquee
           </h3>
           <Marquee pauseOnHover className="[--duration:20s]">
@@ -56,7 +56,7 @@ export function MagicUiSection() {
 
         {/* Card: Border Beam */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Border Beam
           </h3>
           <div className="relative rounded-xl bg-white border border-[#14161a]/10 p-8 max-w-md">
@@ -70,7 +70,7 @@ export function MagicUiSection() {
 
         {/* Text: Blur Fade */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Blur Fade
           </h3>
           <div className="space-y-4">
@@ -86,7 +86,7 @@ export function MagicUiSection() {
 
         {/* Numbers: Number Ticker — demo targets, not real metrics */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Number Ticker
           </h3>
           <p className="text-xs text-[#14161a]/40 mb-3">
@@ -96,19 +96,19 @@ export function MagicUiSection() {
             <div>
               <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">Value A</span>
               <div className="text-5xl font-bold">
-                <NumberTicker value={142} />
+                <NumberTicker value={1} />
               </div>
             </div>
             <div>
               <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">Value B</span>
               <div className="text-5xl font-bold">
-                <NumberTicker value={89430} />
+                <NumberTicker value={7} />
               </div>
             </div>
             <div>
               <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">Value C</span>
               <div className="text-5xl font-bold">
-                <NumberTicker value={5200} />
+                <NumberTicker value={42} />
               </div>
             </div>
           </div>
@@ -116,7 +116,7 @@ export function MagicUiSection() {
 
         {/* Button: Shiny */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Shiny Button
           </h3>
           <div className="flex gap-4">
@@ -127,7 +127,7 @@ export function MagicUiSection() {
 
         {/* Loader / background: Ripple */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Ripple
           </h3>
           <div className="relative h-48 w-full rounded-xl bg-white border border-[#14161a]/10 overflow-hidden">
@@ -137,7 +137,7 @@ export function MagicUiSection() {
 
         {/* Orbit: Orbiting Circles */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Orbiting Circles
           </h3>
           <div className="relative flex h-[400px] w-full flex-col items-center justify-center overflow-hidden rounded-xl bg-white border border-[#14161a]/10">

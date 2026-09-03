@@ -16,7 +16,7 @@ export function FloatingNav({
 }) {
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(true);
-  const [activeHash, setActiveHash] = useState("");
+  const [activeId, setActiveId] = useState("");
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     const previous = scrollYProgress.getPrevious();
@@ -31,11 +31,25 @@ export function FloatingNav({
   });
 
   useEffect(() => {
-    const onHash = () => setActiveHash(window.location.hash);
-    window.addEventListener("hashchange", onHash);
-    onHash();
-    return () => window.removeEventListener("hashchange", onHash);
-  }, []);
+    const ids = navItems.map((item) => item.link.replace("#", ""));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveId(`#${entry.target.id}`);
+          }
+        }
+      },
+      { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
+    );
+
+    for (const id of ids) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+
+    return () => observer.disconnect();
+  }, [navItems]);
 
   return (
     <AnimatePresence mode="wait">
@@ -49,7 +63,7 @@ export function FloatingNav({
         )}
       >
         {navItems.map((item, idx) => {
-          const isActive = activeHash === item.link;
+          const isActive = activeId === item.link;
           return (
             <a
               key={`nav-${idx}`}

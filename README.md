@@ -102,7 +102,7 @@ No paid components are included. All components listed above were verified as fr
 - [TypeScript](https://www.typescriptlang.org) — type safety
 - [Tailwind CSS 3](https://tailwindcss.com) — utility styles
 - [Motion](https://motion.dev) (Framer Motion) — animation runtime
-- [DM Sans](https://fonts.google.com/specimen/DM+Sans) + [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) — typography
+- [Space Mono](https://fonts.google.com/specimen/Space+Mono) + [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) — typography
 
 ## License
 

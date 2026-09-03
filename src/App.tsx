@@ -54,7 +54,7 @@ export default function App() {
             <a
               key={item.name}
               href={item.link}
-              className="px-4 py-2 text-sm rounded-full border border-[#14161a]/15 hover:border-[#d9772e] bg-white/50 hover:bg-white/80 transition-colors"
+              className="px-4 py-2 text-sm rounded-full border border-[#14161a]/15 hover:border-[#14161a]/30 bg-white/50 hover:bg-white/80 transition-colors"
             >
               {item.name}
             </a>

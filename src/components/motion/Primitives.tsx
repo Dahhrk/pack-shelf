@@ -61,7 +61,7 @@ export function SpringLoader() {
 }
 
 const cards = [
-  { id: "alpha", title: "Spring Physics", color: "from-violet-600 to-indigo-600" },
+  { id: "alpha", title: "Spring Physics", color: "from-emerald-700 to-emerald-500" },
   { id: "beta", title: "Layout Animations", color: "from-emerald-600 to-teal-600" },
   { id: "gamma", title: "Gesture Handlers", color: "from-amber-600 to-orange-600" },
 ];

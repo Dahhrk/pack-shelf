@@ -32,7 +32,7 @@ export function ReactBitsSection() {
 
   return (
     <section id="react-bits" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2 text-rose-600 font-mono">
+      <h2 className="text-3xl font-bold mb-2 text-rose-600">
         04 — React Bits
       </h2>
       <p className="text-[#14161a]/60 mb-12 max-w-xl">
@@ -45,7 +45,7 @@ export function ReactBitsSection() {
       <div className="space-y-16">
         {/* Text: Split Text */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Split Text
           </h3>
           <SplitText
@@ -56,7 +56,7 @@ export function ReactBitsSection() {
 
         {/* Text: Blur Text */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Blur Text
           </h3>
           <BlurText
@@ -67,7 +67,7 @@ export function ReactBitsSection() {
 
         {/* Interactive: Click Spark */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Click Spark
           </h3>
           <ClickSpark sparkColor="#fb7185" sparkCount={10}>
@@ -82,7 +82,7 @@ export function ReactBitsSection() {
 
         {/* Interactive: Magnet */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Magnet
           </h3>
           <div className="flex gap-6 items-center justify-center py-8">
@@ -106,7 +106,7 @@ export function ReactBitsSection() {
 
         {/* Numbers: Count Up */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Count Up
           </h3>
           <div className="flex gap-12 items-end">
@@ -133,7 +133,7 @@ export function ReactBitsSection() {
 
         {/* Scroll: Fade Content (multiple directions) */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Fade Content
           </h3>
           <div className="grid grid-cols-2 gap-4">
@@ -162,7 +162,7 @@ export function ReactBitsSection() {
 
         {/* List: Animated List */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Animated List
           </h3>
           <div className="max-w-md">

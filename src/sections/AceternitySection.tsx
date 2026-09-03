@@ -58,7 +58,7 @@ const bentoItems = [
 export function AceternitySection() {
   return (
     <section id="aceternity" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2 text-violet-700 font-mono">
+      <h2 className="text-3xl font-bold mb-2 text-[#14161a]">
         03 — Aceternity UI
       </h2>
       <p className="text-[#14161a]/60 mb-12 max-w-xl">
@@ -71,7 +71,7 @@ export function AceternitySection() {
       <div className="space-y-16">
         {/* Background: Beams (contained) */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Background Beams
           </h3>
           <div className="relative h-64 w-full rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden flex items-center justify-center">
@@ -84,7 +84,7 @@ export function AceternitySection() {
 
         {/* Cards: Hover Effect */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Card Hover Effect
           </h3>
           <HoverEffect items={hoverCards} />
@@ -92,7 +92,7 @@ export function AceternitySection() {
 
         {/* Text: Typewriter */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Typewriter Effect
           </h3>
           <TypewriterEffect words={typewriterWords} />
@@ -100,7 +100,7 @@ export function AceternitySection() {
 
         {/* Grid: Bento */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Bento Grid
           </h3>
           <BentoGrid>
@@ -118,7 +118,7 @@ export function AceternitySection() {
 
         {/* Button: Moving Border */}
         <div>
-          <h3 className="text-sm font-mono text-[#14161a]/40 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Moving Border
           </h3>
           <div className="flex gap-4 flex-wrap">
