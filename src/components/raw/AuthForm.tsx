@@ -338,6 +338,8 @@ export function AuthForm() {
         <div
           style={{
             position: "relative",
+            display: "flex",
+            alignItems: "center",
             marginBottom: 24,
           }}
         >
@@ -368,8 +370,6 @@ export function AuthForm() {
             style={{
               position: "absolute",
               right: 10,
-              top: "50%",
-              transform: "translateY(-50%)",
               background: "none",
               border: "none",
               color: ACCENT,
