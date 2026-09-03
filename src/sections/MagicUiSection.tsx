@@ -144,19 +144,19 @@ export function MagicUiSection() {
             <span className="pointer-events-none whitespace-pre-wrap text-center text-5xl font-semibold leading-none text-[#14161a]/20">
               Orbit
             </span>
-            <OrbitingCircles radius={80} duration={20}>
+            <OrbitingCircles radius={80} duration={20} delay={0}>
               <span className="text-2xl">⚛️</span>
             </OrbitingCircles>
             <OrbitingCircles radius={80} duration={20} delay={10}>
               <span className="text-2xl">🎨</span>
             </OrbitingCircles>
-            <OrbitingCircles radius={140} duration={30} reverse>
+            <OrbitingCircles radius={140} duration={30} delay={0} reverse>
               <span className="text-2xl">✨</span>
             </OrbitingCircles>
             <OrbitingCircles radius={140} duration={30} delay={15} reverse>
               <span className="text-2xl">🚀</span>
             </OrbitingCircles>
-            <OrbitingCircles radius={200} duration={40}>
+            <OrbitingCircles radius={200} duration={40} delay={0}>
               <span className="text-2xl">📦</span>
             </OrbitingCircles>
             <OrbitingCircles radius={200} duration={40} delay={20}>
