@@ -1,0 +1,51 @@
+<section#raw>
+  <h2> text="05 — Raw, no dependency"
+  <p>
+  <div>
+    <div>
+      <h3> text="Auth — Attentive Form"
+      <div>
+        <div>
+          <svg aria-hidden="true">
+        <div>
+          <h3> text="Welcome back"
+          <label> text="Email"
+          <input#auth-email type="email" placeholder="you@example.com"> value=""
+          <label> text="Password"
+          <div>
+            <input#auth-password type="password" placeholder="••••••••"> value=""
+            <button#auth-reveal type="button"> text="Show"
+          <button type="button"> text="Sign in"
+          <div>
+            <button type="button"> text="Sign up"
+    <div>
+      <h3> text="OTP — Converging Digits"
+      <div>
+        <div>
+          <h3> text="Enter verification code"
+          <p>
+          <div>
+            <div>
+              <div>
+              <input type="text" aria-label="Digit 1 of 6"> value=""
+            <div>
+              <div>
+              <input type="text" aria-label="Digit 2 of 6"> value=""
+            <div>
+              <div>
+              <input type="text" aria-label="Digit 3 of 6"> value=""
+            <div>
+              <div>
+              <input type="text" aria-label="Digit 4 of 6"> value=""
+            <div>
+              <div>
+              <input type="text" aria-label="Digit 5 of 6"> value=""
+            <div>
+              <div>
+              <input type="text" aria-label="Digit 6 of 6"> value=""
+            <div>
+            <div>
+            <div>
+            <div>
+            <div>
+          <button type="button"> text="Reset"

@@ -11,19 +11,35 @@ import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 const ACCENT = "#10b981";
 const BOX_COUNT = 6;
-const DIGIT_FILL_DURATION = 0.4;
+const FILL_DURATION = 0.4;
 const DROPLET_DURATION = 0.2;
 const MERGE_DURATION = 0.5;
+const GAP = 10;
 
 export function OtpForm() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const cellsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const fillsRef = useRef<(HTMLDivElement | null)[]>([]);
   const boxesRef = useRef<(HTMLInputElement | null)[]>([]);
   const dropletsRef = useRef<(HTMLDivElement | null)[]>([]);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const pillRef = useRef<HTMLDivElement>(null);
   const mergedRef = useRef(false);
   const reducedMotion = useReducedMotion();
   const [digits, setDigits] = useState<string[]>(Array(BOX_COUNT).fill(""));
+
+  const setCellRef = useCallback(
+    (idx: number) => (el: HTMLDivElement | null) => {
+      cellsRef.current[idx] = el;
+    },
+    [],
+  );
+
+  const setFillRef = useCallback(
+    (idx: number) => (el: HTMLDivElement | null) => {
+      fillsRef.current[idx] = el;
+    },
+    [],
+  );
 
   const setBoxRef = useCallback(
     (idx: number) => (el: HTMLInputElement | null) => {
@@ -39,17 +55,21 @@ export function OtpForm() {
     [],
   );
 
-  const animateDigitFill = useCallback(
-    (box: HTMLInputElement) => {
-      if (reducedMotion) return;
+  const animateLiquidFill = useCallback(
+    (idx: number) => {
+      const fill = fillsRef.current[idx];
+      if (!fill) return;
+      if (reducedMotion) {
+        fill.style.height = "100%";
+        return;
+      }
       gsap.fromTo(
-        box,
-        { scale: 0.7, opacity: 0.3 },
+        fill,
+        { height: "0%" },
         {
-          scale: 1,
-          opacity: 1,
-          duration: DIGIT_FILL_DURATION,
-          ease: "elastic.out(1.4, 0.4)",
+          height: "100%",
+          duration: FILL_DURATION,
+          ease: "elastic.out(1.2, 0.4)",
         },
       );
     },
@@ -61,12 +81,12 @@ export function OtpForm() {
       if (reducedMotion) return;
       const droplet = dropletsRef.current[fromIdx];
       if (!droplet) return;
-      const fromBox = boxesRef.current[fromIdx];
-      const toBox = boxesRef.current[fromIdx + 1];
-      if (!fromBox || !toBox) return;
+      const fromCell = cellsRef.current[fromIdx];
+      const toCell = cellsRef.current[fromIdx + 1];
+      if (!fromCell || !toCell) return;
 
-      const fromRect = fromBox.getBoundingClientRect();
-      const toRect = toBox.getBoundingClientRect();
+      const fromRect = fromCell.getBoundingClientRect();
+      const toRect = toCell.getBoundingClientRect();
       const wrapperRect = wrapperRef.current?.getBoundingClientRect();
       if (!wrapperRect) return;
 
@@ -74,12 +94,7 @@ export function OtpForm() {
       const endX = toRect.left - wrapperRect.left;
       const y = fromRect.top - wrapperRect.top + fromRect.height / 2;
 
-      gsap.set(droplet, {
-        x: startX,
-        y: y,
-        opacity: 1,
-        scale: 1,
-      });
+      gsap.set(droplet, { x: startX, y: y, opacity: 1, scale: 1 });
       gsap.to(droplet, {
         x: endX,
         duration: DROPLET_DURATION,
@@ -96,62 +111,69 @@ export function OtpForm() {
     if (mergedRef.current) return;
     mergedRef.current = true;
 
-    const boxes = boxesRef.current.filter(Boolean) as HTMLInputElement[];
+    const cells = cellsRef.current.filter(Boolean) as HTMLDivElement[];
+    const fills = fillsRef.current.filter(Boolean) as HTMLDivElement[];
+    const inputs = boxesRef.current.filter(Boolean) as HTMLInputElement[];
     const wrapper = wrapperRef.current;
-    const pill = pillRef.current;
-    if (!wrapper || !pill || boxes.length < BOX_COUNT) return;
+    if (!wrapper || cells.length < BOX_COUNT) return;
 
     if (reducedMotion) {
-      boxes.forEach((b) => (b.style.opacity = "0"));
-      pill.style.opacity = "1";
-      pill.style.display = "flex";
+      wrapper.style.gap = "0px";
+      cells.forEach((cell, i) => {
+        cell.style.backgroundColor = ACCENT;
+        cell.style.borderColor = "transparent";
+        if (i === 0) cell.style.borderRadius = "28px 0 0 28px";
+        else if (i === BOX_COUNT - 1) cell.style.borderRadius = "0 28px 28px 0";
+        else cell.style.borderRadius = "0";
+      });
+      fills.forEach((f) => (f.style.opacity = "0"));
+      inputs.forEach((inp) => (inp.style.color = "#fff"));
       return;
     }
 
-    const tl = gsap.timeline();
     const wrapperRect = wrapper.getBoundingClientRect();
-    const centerX = wrapperRect.width / 2;
+    const cellWidth = cells[0].getBoundingClientRect().width;
+    const mergedWidth = cellWidth * BOX_COUNT;
+    const mergedLeft = (wrapperRect.width - mergedWidth) / 2;
 
-    boxes.forEach((box, i) => {
-      const boxRect = box.getBoundingClientRect();
-      const boxCenterX = boxRect.left - wrapperRect.left + boxRect.width / 2;
-      const moveX = centerX - boxCenterX;
+    const tl = gsap.timeline();
+
+    cells.forEach((cell, i) => {
+      const cellRect = cell.getBoundingClientRect();
+      const currentLeft = cellRect.left - wrapperRect.left;
+      const targetLeft = mergedLeft + i * cellWidth;
+      const moveX = targetLeft - currentLeft;
 
       tl.to(
-        box,
-        {
-          x: moveX,
-          duration: MERGE_DURATION,
-          ease: "elastic.out(1.0, 0.6)",
-        },
+        cell,
+        { x: moveX, duration: MERGE_DURATION, ease: "elastic.out(1.0, 0.6)" },
         0,
       );
     });
 
     tl.to(
-      boxes,
-      {
-        opacity: 0,
-        duration: 0.15,
-      },
-      MERGE_DURATION * 0.7,
+      fills,
+      { opacity: 0, duration: 0.15 },
+      MERGE_DURATION * 0.5,
     );
 
-    tl.fromTo(
-      pill,
-      {
-        opacity: 0,
-        scale: 0.6,
-        display: "flex",
-      },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 0.4,
-        ease: "elastic.out(1.2, 0.5)",
-        display: "flex",
-      },
-      MERGE_DURATION * 0.6,
+    cells.forEach((cell, i) => {
+      const pillProps: gsap.TweenVars = {
+        backgroundColor: ACCENT,
+        borderColor: "transparent",
+        duration: 0.2,
+      };
+      if (i === 0) pillProps.borderRadius = "28px 0 0 28px";
+      else if (i === BOX_COUNT - 1) pillProps.borderRadius = "0 28px 28px 0";
+      else pillProps.borderRadius = "0";
+
+      tl.to(cell, pillProps, MERGE_DURATION * 0.55);
+    });
+
+    tl.to(
+      inputs,
+      { color: "#fff", duration: 0.2 },
+      MERGE_DURATION * 0.55,
     );
   }, [reducedMotion]);
 
@@ -163,8 +185,7 @@ export function OtpForm() {
         next[idx] = digit;
 
         if (digit) {
-          const box = boxesRef.current[idx];
-          if (box) animateDigitFill(box);
+          animateLiquidFill(idx);
 
           if (idx < BOX_COUNT - 1) {
             animateDroplet(idx);
@@ -175,14 +196,18 @@ export function OtpForm() {
 
           const allFilled = next.every((d) => d !== "");
           if (allFilled) {
-            setTimeout(() => animateMerge(), 200);
+            if (reducedMotion) {
+              animateMerge();
+            } else {
+              setTimeout(() => animateMerge(), 200);
+            }
           }
         }
 
         return next;
       });
     },
-    [animateDigitFill, animateDroplet, animateMerge],
+    [animateLiquidFill, animateDroplet, animateMerge, reducedMotion],
   );
 
   const handleKeyDown = useCallback(
@@ -210,17 +235,16 @@ export function OtpForm() {
   const handlePaste = useCallback(
     (e: React.ClipboardEvent) => {
       e.preventDefault();
-      const pasted = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, BOX_COUNT);
+      const pasted = e.clipboardData
+        .getData("text")
+        .replace(/\D/g, "")
+        .slice(0, BOX_COUNT);
       if (!pasted) return;
       const newDigits = [...digits];
       for (let i = 0; i < pasted.length; i++) {
         newDigits[i] = pasted[i];
-        const box = boxesRef.current[i];
-        if (box) {
-          box.value = pasted[i];
-          animateDigitFill(box);
-          if (i < pasted.length - 1) animateDroplet(i);
-        }
+        animateLiquidFill(i);
+        if (i < pasted.length - 1) animateDroplet(i);
       }
       setDigits(newDigits);
       const nextEmpty = newDigits.findIndex((d) => !d);
@@ -228,40 +252,56 @@ export function OtpForm() {
       boxesRef.current[focusIdx]?.focus();
 
       if (newDigits.every((d) => d !== "")) {
-        setTimeout(() => animateMerge(), 200);
+        if (reducedMotion) {
+          animateMerge();
+        } else {
+          setTimeout(() => animateMerge(), 200);
+        }
       }
     },
-    [digits, animateDigitFill, animateDroplet, animateMerge],
+    [digits, animateLiquidFill, animateDroplet, animateMerge, reducedMotion],
   );
 
   const reset = useCallback(() => {
     mergedRef.current = false;
     setDigits(Array(BOX_COUNT).fill(""));
-    const boxes = boxesRef.current.filter(Boolean) as HTMLInputElement[];
-    const pill = pillRef.current;
 
-    boxes.forEach((box) => {
-      gsap.set(box, { x: 0, opacity: 1, scale: 1 });
-      box.value = "";
+    const wrapper = wrapperRef.current;
+    const cells = cellsRef.current.filter(Boolean) as HTMLDivElement[];
+    const fills = fillsRef.current.filter(Boolean) as HTMLDivElement[];
+    const inputs = boxesRef.current.filter(Boolean) as HTMLInputElement[];
+
+    if (wrapper) wrapper.style.gap = `${GAP}px`;
+
+    cells.forEach((cell) => {
+      gsap.set(cell, { x: 0 });
+      cell.style.backgroundColor = "#fff";
+      cell.style.borderColor = "rgba(20,22,26,0.15)";
+      cell.style.borderRadius = "12px";
     });
 
-    if (pill) {
-      gsap.set(pill, { opacity: 0, scale: 0.6, display: "none" });
-    }
+    fills.forEach((fill) => {
+      fill.style.height = "0%";
+      fill.style.opacity = "1";
+    });
+
+    inputs.forEach((inp) => {
+      inp.style.color = "#14161a";
+      inp.value = "";
+    });
 
     boxesRef.current[0]?.focus();
   }, []);
 
   useEffect(() => {
-    const pill = pillRef.current;
-    if (pill) {
-      gsap.set(pill, { display: "none", opacity: 0 });
-    }
+    const fills = fillsRef.current.filter(Boolean) as HTMLDivElement[];
+    fills.forEach((f) => (f.style.height = "0%"));
   }, []);
 
   return (
     <div
       ref={containerRef}
+      className="otp-form-container"
       style={{
         maxWidth: 420,
         margin: "0 auto",
@@ -303,13 +343,41 @@ export function OtpForm() {
             position: "relative",
             display: "flex",
             justifyContent: "center",
-            gap: 10,
+            gap: GAP,
             marginBottom: 24,
           }}
           onPaste={handlePaste}
         >
           {Array.from({ length: BOX_COUNT }).map((_, i) => (
-            <div key={i} style={{ position: "relative" }}>
+            <div
+              key={i}
+              ref={setCellRef(i)}
+              style={{
+                position: "relative",
+                width: 48,
+                height: 56,
+                borderRadius: 12,
+                border: "2px solid rgba(20,22,26,0.15)",
+                boxSizing: "border-box",
+                overflow: "hidden",
+                backgroundColor: "#fff",
+                transition: "border-color 0.15s",
+              }}
+            >
+              {/* Liquid fill — rises from bottom with elastic overshoot */}
+              <div
+                ref={setFillRef(i)}
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: "0%",
+                  background: `${ACCENT}20`,
+                  borderRadius: "4px 4px 0 0",
+                  pointerEvents: "none",
+                }}
+              />
               <input
                 ref={setBoxRef(i)}
                 type="text"
@@ -321,76 +389,52 @@ export function OtpForm() {
                 onChange={(e) => handleInput(i, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(i, e)}
                 style={{
-                  width: 48,
-                  height: 56,
+                  position: "relative",
+                  zIndex: 1,
+                  width: "100%",
+                  height: "100%",
                   textAlign: "center",
                   fontSize: 24,
                   fontWeight: 700,
                   fontFamily: "'JetBrains Mono', monospace",
-                  borderRadius: 12,
-                  border: `2px solid ${digits[i] ? ACCENT : "rgba(20,22,26,0.15)"}`,
-                  outline: "none",
+                  border: "none",
+                  background: "transparent",
                   color: "#14161a",
-                  transition: "border-color 0.15s",
-                  background: digits[i]
-                    ? `${ACCENT}08`
-                    : "#fff",
+                  boxSizing: "border-box",
                 }}
-                onFocus={(e) => {
-                  if (!digits[i])
-                    e.currentTarget.style.borderColor = ACCENT;
+                onFocus={() => {
+                  const cell = cellsRef.current[i];
+                  if (cell && !mergedRef.current)
+                    cell.style.borderColor = ACCENT;
                 }}
-                onBlur={(e) => {
-                  if (!digits[i])
-                    e.currentTarget.style.borderColor = "rgba(20,22,26,0.15)";
+                onBlur={() => {
+                  const cell = cellsRef.current[i];
+                  if (cell && !mergedRef.current && !digits[i])
+                    cell.style.borderColor = "rgba(20,22,26,0.15)";
                 }}
               />
-              {i < BOX_COUNT - 1 && (
-                <div
-                  ref={setDropletRef(i)}
-                  style={{
-                    position: "absolute",
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    background: ACCENT,
-                    opacity: 0,
-                    pointerEvents: "none",
-                    top: 0,
-                    left: 0,
-                    zIndex: 10,
-                  }}
-                />
-              )}
             </div>
           ))}
 
-          {/* Merged pill — hidden until all digits filled */}
-          <div
-            ref={pillRef}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: "50%",
-              transform: "translateX(-50%)",
-              display: "none",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 2,
-              height: 56,
-              padding: "0 28px",
-              borderRadius: 28,
-              background: ACCENT,
-              color: "#fff",
-              fontSize: 24,
-              fontWeight: 700,
-              fontFamily: "'JetBrains Mono', monospace",
-              letterSpacing: "0.15em",
-              whiteSpace: "nowrap" as const,
-            }}
-          >
-            {digits.join("")}
-          </div>
+          {/* Droplets — positioned in wrapper coordinate space */}
+          {Array.from({ length: BOX_COUNT - 1 }).map((_, i) => (
+            <div
+              key={`droplet-${i}`}
+              ref={setDropletRef(i)}
+              style={{
+                position: "absolute",
+                width: 8,
+                height: 8,
+                borderRadius: "50%",
+                background: ACCENT,
+                opacity: 0,
+                pointerEvents: "none",
+                top: 0,
+                left: 0,
+                zIndex: 10,
+              }}
+            />
+          ))}
         </div>
 
         <button
