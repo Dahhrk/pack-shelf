@@ -4,6 +4,7 @@ import { MotionSection } from "./sections/MotionSection";
 import { MagicUiSection } from "./sections/MagicUiSection";
 import { AceternitySection } from "./sections/AceternitySection";
 import { ReactBitsSection } from "./sections/ReactBitsSection";
+import { RawSection } from "./sections/RawSection";
 import { FloatingNav } from "./components/aceternity/FloatingNav";
 
 const navItems = [
@@ -11,6 +12,7 @@ const navItems = [
   { name: "Magic UI", link: "#magic-ui" },
   { name: "Aceternity", link: "#aceternity" },
   { name: "React Bits", link: "#react-bits" },
+  { name: "Raw", link: "#raw" },
 ];
 
 export default function App() {
@@ -41,7 +43,7 @@ export default function App() {
           transition={prefersReduced ? { duration: 0 } : { delay: 0.3 }}
         >
           Freelancer pack lab — browsable gallery of animated components
-          from Motion, Magic UI, Aceternity UI, and React Bits.
+          from Motion, Magic UI, Aceternity UI, React Bits, and raw craft.
         </motion.p>
 
         <motion.nav
@@ -73,6 +75,9 @@ export default function App() {
 
       <div className="border-t border-[#14161a]/10" />
       <ReactBitsSection />
+
+      <div className="border-t border-[#14161a]/10" />
+      <RawSection />
 
       {/* Footer */}
       <footer className="py-16 px-6 text-center border-t border-[#14161a]/10">
