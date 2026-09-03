@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducedMotion } from "./hooks/useReducedMotion";
 import { motion } from "motion/react";
 import { MotionSection } from "./sections/MotionSection";
 import { MagicUiSection } from "./sections/MagicUiSection";
@@ -14,28 +14,31 @@ const navItems = [
 ];
 
 export default function App() {
+  const prefersReduced = useReducedMotion();
+
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <div className="min-h-screen bg-[#eef0ec] text-[#14161a]">
       <FloatingNav navItems={navItems} />
 
       {/* Hero */}
       <header className="pt-32 pb-16 px-6 max-w-6xl mx-auto text-center">
         <motion.h1
-          className="text-5xl sm:text-7xl font-bold tracking-tight"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-5xl sm:text-7xl font-bold tracking-tight text-[#14161a]"
+          initial={prefersReduced ? false : { opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 80, damping: 20 }}
+          transition={
+            prefersReduced
+              ? { duration: 0 }
+              : { type: "spring", stiffness: 80, damping: 20 }
+          }
         >
-          Pack{" "}
-          <span className="bg-gradient-to-r from-emerald-400 via-amber-400 to-rose-400 bg-clip-text text-transparent">
-            Shelf
-          </span>
+          Pack Shelf
         </motion.h1>
         <motion.p
-          className="mt-4 text-lg text-zinc-400 max-w-lg mx-auto"
-          initial={{ opacity: 0 }}
+          className="mt-4 text-lg text-[#14161a]/60 max-w-lg mx-auto"
+          initial={prefersReduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          transition={prefersReduced ? { duration: 0 } : { delay: 0.3 }}
         >
           Freelancer pack lab — browsable gallery of animated components
           from Motion, Magic UI, Aceternity UI, and React Bits.
@@ -43,15 +46,15 @@ export default function App() {
 
         <motion.nav
           className="mt-10 flex justify-center gap-3 flex-wrap"
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReduced ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
+          transition={prefersReduced ? { duration: 0 } : { delay: 0.5 }}
         >
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.link}
-              className="px-4 py-2 text-sm rounded-full border border-zinc-800 hover:border-zinc-600 bg-zinc-900/50 hover:bg-zinc-800/50 transition-colors"
+              className="px-4 py-2 text-sm rounded-full border border-[#14161a]/15 hover:border-[#d9772e] bg-white/50 hover:bg-white/80 transition-colors"
             >
               {item.name}
             </a>
@@ -59,25 +62,25 @@ export default function App() {
         </motion.nav>
       </header>
 
-      <div className="border-t border-zinc-800/50" />
+      <div className="border-t border-[#14161a]/10" />
       <MotionSection />
 
-      <div className="border-t border-zinc-800/50" />
+      <div className="border-t border-[#14161a]/10" />
       <MagicUiSection />
 
-      <div className="border-t border-zinc-800/50" />
+      <div className="border-t border-[#14161a]/10" />
       <AceternitySection />
 
-      <div className="border-t border-zinc-800/50" />
+      <div className="border-t border-[#14161a]/10" />
       <ReactBitsSection />
 
       {/* Footer */}
-      <footer className="py-16 px-6 text-center border-t border-zinc-800/50">
-        <p className="text-zinc-500 text-sm">
+      <footer className="py-16 px-6 text-center border-t border-[#14161a]/10">
+        <p className="text-[#14161a]/50 text-sm">
           Pack Shelf — freelancer animation lab.{" "}
           <a
             href="https://github.com/Dahhrk/pack-shelf"
-            className="text-zinc-400 underline"
+            className="text-[#14161a]/70 underline"
             target="_blank"
             rel="noopener noreferrer"
           >

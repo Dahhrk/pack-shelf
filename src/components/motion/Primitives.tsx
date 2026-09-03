@@ -97,7 +97,7 @@ export function AnimatePresenceMenu() {
   return (
     <div className="relative">
       <motion.button
-        className="px-5 py-2.5 bg-zinc-800 rounded-lg font-medium border border-zinc-700 hover:border-zinc-500 transition-colors"
+        className="px-5 py-2.5 bg-white rounded-lg font-medium border border-[#14161a]/15 hover:border-[#14161a]/30 transition-colors"
         onClick={() => setOpen(!open)}
         whileTap={{ scale: 0.95 }}
       >
@@ -111,7 +111,7 @@ export function AnimatePresenceMenu() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="mt-3 bg-zinc-800/90 backdrop-blur rounded-xl border border-zinc-700 overflow-hidden"
+            className="mt-3 bg-white/90 backdrop-blur rounded-xl border border-[#14161a]/10 overflow-hidden"
           >
             {menuItems.map((item, i) => (
               <motion.li
@@ -120,7 +120,7 @@ export function AnimatePresenceMenu() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ delay: i * 0.05 }}
-                className="px-5 py-3 hover:bg-zinc-700/50 cursor-pointer border-b border-zinc-700/50 last:border-0 transition-colors"
+                className="px-5 py-3 hover:bg-[#14161a]/5 cursor-pointer border-b border-[#14161a]/5 last:border-0 transition-colors"
               >
                 {item}
               </motion.li>
