@@ -3,7 +3,7 @@
 // Source: Original — built for pack-shelf app-UI specimens
 // License: MIT (this file)
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Popover from "@radix-ui/react-popover";
 import * as RadixTooltip from "@radix-ui/react-tooltip";
@@ -11,7 +11,7 @@ import { Drawer } from "vaul";
 import { toast, Toaster } from "sonner";
 import { motion, AnimatePresence } from "motion/react";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
-import { X, Info, Bell, MessageSquare, Check } from "lucide-react";
+import { X, Info, Bell, Check } from "lucide-react";
 
 function FocusTrapModal() {
   const [open, setOpen] = useState(false);

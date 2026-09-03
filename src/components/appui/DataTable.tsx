@@ -255,7 +255,7 @@ export function DataTable() {
                     transform: `translateY(${virtualRow.start}px)`,
                     display: "table-row",
                   }}
-                  layout={!reduced}
+                  layout={!reduced ? "position" : undefined}
                   onClick={() => handleOptimisticToggle(row.original.id)}
                 >
                   {row.getVisibleCells().map((cell) => (
