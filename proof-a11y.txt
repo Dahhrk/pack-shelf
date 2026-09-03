@@ -1,13 +1,13 @@
 <section#raw>
   <h2> text="05 — Raw, no dependency"
-  <p>
+  <p> text="Interaction craft with no animation-library dependency (Auth) or GSAP timelines "
   <div>
     <div>
       <h3> text="Auth — Attentive Form"
       <div>
         <div>
           <svg aria-hidden="true">
-        <div>
+        <form#auth-form> text="Welcome backEmailPasswordShowSign inNo account? Sign up"
           <h3> text="Welcome back"
           <label> text="Email"
           <input#auth-email type="email" placeholder="you@example.com"> value=""
@@ -15,7 +15,7 @@
           <div>
             <input#auth-password type="password" placeholder="••••••••"> value=""
             <button#auth-reveal type="button"> text="Show"
-          <button type="button"> text="Sign in"
+          <button type="submit"> text="Sign in"
           <div>
             <button type="button"> text="Sign up"
     <div>
@@ -23,7 +23,7 @@
       <div>
         <div>
           <h3> text="Enter verification code"
-          <p>
+          <p> text="We sent a 6-digit code to your email"
           <div>
             <div>
               <div>

@@ -12,6 +12,7 @@ import { useReducedMotion } from "../../hooks/useReducedMotion";
 const ACCENT = "#10b981";
 const BOX_COUNT = 6;
 const FILL_DURATION = 0.4;
+const DRAIN_DURATION = 0.35;
 const DROPLET_DURATION = 0.2;
 const MERGE_DURATION = 0.5;
 const GAP = 10;
@@ -26,6 +27,12 @@ export function OtpForm() {
   const mergedRef = useRef(false);
   const reducedMotion = useReducedMotion();
   const [digits, setDigits] = useState<string[]>(Array(BOX_COUNT).fill(""));
+
+  // ROW 2: tracked tweens — every GSAP tween and timeout stored for kill
+  const mergeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mergeTimelineRef = useRef<gsap.core.Timeline | null>(null);
+  const fillTweensRef = useRef<gsap.core.Tween[]>([]);
+  const dropletTweensRef = useRef<gsap.core.Tween[]>([]);
 
   const setCellRef = useCallback(
     (idx: number) => (el: HTMLDivElement | null) => {
@@ -55,6 +62,22 @@ export function OtpForm() {
     [],
   );
 
+  function killAllTweens() {
+    if (mergeTimeoutRef.current !== null) {
+      clearTimeout(mergeTimeoutRef.current);
+      mergeTimeoutRef.current = null;
+    }
+    if (mergeTimelineRef.current) {
+      mergeTimelineRef.current.kill();
+      mergeTimelineRef.current = null;
+    }
+    fillTweensRef.current.forEach((tw) => tw.kill());
+    fillTweensRef.current = [];
+    dropletTweensRef.current.forEach((tw) => tw.kill());
+    dropletTweensRef.current = [];
+  }
+
+  // ROW 1: liquid fill — same elastic material on raise AND drain
   const animateLiquidFill = useCallback(
     (idx: number) => {
       const fill = fillsRef.current[idx];
@@ -63,15 +86,31 @@ export function OtpForm() {
         fill.style.height = "100%";
         return;
       }
-      gsap.fromTo(
-        fill,
-        { height: "0%" },
-        {
-          height: "100%",
-          duration: FILL_DURATION,
-          ease: "elastic.out(1.2, 0.4)",
-        },
-      );
+      const tw = gsap.to(fill, {
+        height: "100%",
+        duration: FILL_DURATION,
+        ease: "elastic.out(1.2, 0.4)",
+      });
+      fillTweensRef.current.push(tw);
+    },
+    [reducedMotion],
+  );
+
+  // ROW 1: drain — same elastic liquid material as raise
+  const animateLiquidDrain = useCallback(
+    (idx: number) => {
+      const fill = fillsRef.current[idx];
+      if (!fill) return;
+      if (reducedMotion) {
+        fill.style.height = "0%";
+        return;
+      }
+      const tw = gsap.to(fill, {
+        height: "0%",
+        duration: DRAIN_DURATION,
+        ease: "elastic.out(1.2, 0.4)",
+      });
+      fillTweensRef.current.push(tw);
     },
     [reducedMotion],
   );
@@ -95,14 +134,20 @@ export function OtpForm() {
       const y = fromRect.top - wrapperRect.top + fromRect.height / 2;
 
       gsap.set(droplet, { x: startX, y: y, opacity: 1, scale: 1 });
-      gsap.to(droplet, {
+      const tw1 = gsap.to(droplet, {
         x: endX,
         duration: DROPLET_DURATION,
         ease: "power2.out",
         onComplete: () => {
-          gsap.to(droplet, { opacity: 0, scale: 0.3, duration: 0.1 });
+          const tw2 = gsap.to(droplet, {
+            opacity: 0,
+            scale: 0.3,
+            duration: 0.1,
+          });
+          dropletTweensRef.current.push(tw2);
         },
       });
+      dropletTweensRef.current.push(tw1);
     },
     [reducedMotion],
   );
@@ -123,7 +168,8 @@ export function OtpForm() {
         cell.style.backgroundColor = ACCENT;
         cell.style.borderColor = "transparent";
         if (i === 0) cell.style.borderRadius = "28px 0 0 28px";
-        else if (i === BOX_COUNT - 1) cell.style.borderRadius = "0 28px 28px 0";
+        else if (i === BOX_COUNT - 1)
+          cell.style.borderRadius = "0 28px 28px 0";
         else cell.style.borderRadius = "0";
       });
       fills.forEach((f) => (f.style.opacity = "0"));
@@ -137,6 +183,7 @@ export function OtpForm() {
     const mergedLeft = (wrapperRect.width - mergedWidth) / 2;
 
     const tl = gsap.timeline();
+    mergeTimelineRef.current = tl;
 
     cells.forEach((cell, i) => {
       const cellRect = cell.getBoundingClientRect();
@@ -146,16 +193,16 @@ export function OtpForm() {
 
       tl.to(
         cell,
-        { x: moveX, duration: MERGE_DURATION, ease: "elastic.out(1.0, 0.6)" },
+        {
+          x: moveX,
+          duration: MERGE_DURATION,
+          ease: "elastic.out(1.0, 0.6)",
+        },
         0,
       );
     });
 
-    tl.to(
-      fills,
-      { opacity: 0, duration: 0.15 },
-      MERGE_DURATION * 0.5,
-    );
+    tl.to(fills, { opacity: 0, duration: 0.15 }, MERGE_DURATION * 0.5);
 
     cells.forEach((cell, i) => {
       const pillProps: gsap.TweenVars = {
@@ -164,28 +211,54 @@ export function OtpForm() {
         duration: 0.2,
       };
       if (i === 0) pillProps.borderRadius = "28px 0 0 28px";
-      else if (i === BOX_COUNT - 1) pillProps.borderRadius = "0 28px 28px 0";
+      else if (i === BOX_COUNT - 1)
+        pillProps.borderRadius = "0 28px 28px 0";
       else pillProps.borderRadius = "0";
 
       tl.to(cell, pillProps, MERGE_DURATION * 0.55);
     });
 
-    tl.to(
-      inputs,
-      { color: "#fff", duration: 0.2 },
-      MERGE_DURATION * 0.55,
-    );
+    tl.to(inputs, { color: "#fff", duration: 0.2 }, MERGE_DURATION * 0.55);
   }, [reducedMotion]);
+
+  const scheduleMerge = useCallback(() => {
+    if (reducedMotion) {
+      animateMerge();
+    } else {
+      mergeTimeoutRef.current = setTimeout(() => {
+        mergeTimeoutRef.current = null;
+        animateMerge();
+      }, 200);
+    }
+  }, [animateMerge, reducedMotion]);
 
   const handleInput = useCallback(
     (idx: number, value: string) => {
       const digit = value.replace(/\D/g, "").slice(-1);
       setDigits((prev) => {
         const next = [...prev];
+        const hadDigit = !!prev[idx];
         next[idx] = digit;
 
         if (digit) {
-          animateLiquidFill(idx);
+          // ROW 1: overwrite re-plays fill (drain from current then raise)
+          if (hadDigit) {
+            animateLiquidDrain(idx);
+            const fill = fillsRef.current[idx];
+            if (fill && !reducedMotion) {
+              const tw = gsap.to(fill, {
+                height: "100%",
+                duration: FILL_DURATION,
+                ease: "elastic.out(1.2, 0.4)",
+                delay: DRAIN_DURATION * 0.3,
+              });
+              fillTweensRef.current.push(tw);
+            } else if (fill && reducedMotion) {
+              fill.style.height = "100%";
+            }
+          } else {
+            animateLiquidFill(idx);
+          }
 
           if (idx < BOX_COUNT - 1) {
             animateDroplet(idx);
@@ -196,18 +269,23 @@ export function OtpForm() {
 
           const allFilled = next.every((d) => d !== "");
           if (allFilled) {
-            if (reducedMotion) {
-              animateMerge();
-            } else {
-              setTimeout(() => animateMerge(), 200);
-            }
+            scheduleMerge();
           }
+        } else {
+          // ROW 1: digit cleared — drain fill
+          animateLiquidDrain(idx);
         }
 
         return next;
       });
     },
-    [animateLiquidFill, animateDroplet, animateMerge, reducedMotion],
+    [
+      animateLiquidFill,
+      animateLiquidDrain,
+      animateDroplet,
+      scheduleMerge,
+      reducedMotion,
+    ],
   );
 
   const handleKeyDown = useCallback(
@@ -215,6 +293,9 @@ export function OtpForm() {
       if (e.key === "Backspace") {
         if (!digits[idx] && idx > 0) {
           boxesRef.current[idx - 1]?.focus();
+        } else if (digits[idx]) {
+          // ROW 1: drain the fill for this cell
+          animateLiquidDrain(idx);
         }
         setDigits((prev) => {
           const next = [...prev];
@@ -229,7 +310,7 @@ export function OtpForm() {
         boxesRef.current[idx + 1]?.focus();
       }
     },
-    [digits],
+    [digits, animateLiquidDrain],
   );
 
   const handlePaste = useCallback(
@@ -241,10 +322,16 @@ export function OtpForm() {
         .slice(0, BOX_COUNT);
       if (!pasted) return;
       const newDigits = [...digits];
-      for (let i = 0; i < pasted.length; i++) {
-        newDigits[i] = pasted[i];
-        animateLiquidFill(i);
-        if (i < pasted.length - 1) animateDroplet(i);
+      for (let i = 0; i < BOX_COUNT; i++) {
+        if (i < pasted.length) {
+          newDigits[i] = pasted[i];
+          animateLiquidFill(i);
+          if (i < pasted.length - 1) animateDroplet(i);
+        } else if (newDigits[i]) {
+          // ROW 1: cells beyond paste length drain
+          newDigits[i] = "";
+          animateLiquidDrain(i);
+        }
       }
       setDigits(newDigits);
       const nextEmpty = newDigits.findIndex((d) => !d);
@@ -252,17 +339,21 @@ export function OtpForm() {
       boxesRef.current[focusIdx]?.focus();
 
       if (newDigits.every((d) => d !== "")) {
-        if (reducedMotion) {
-          animateMerge();
-        } else {
-          setTimeout(() => animateMerge(), 200);
-        }
+        scheduleMerge();
       }
     },
-    [digits, animateLiquidFill, animateDroplet, animateMerge, reducedMotion],
+    [
+      digits,
+      animateLiquidFill,
+      animateLiquidDrain,
+      animateDroplet,
+      scheduleMerge,
+    ],
   );
 
+  // ROW 2: reset kills everything, restores six empty cells, safe to call twice
   const reset = useCallback(() => {
+    killAllTweens();
     mergedRef.current = false;
     setDigits(Array(BOX_COUNT).fill(""));
 
@@ -270,17 +361,19 @@ export function OtpForm() {
     const cells = cellsRef.current.filter(Boolean) as HTMLDivElement[];
     const fills = fillsRef.current.filter(Boolean) as HTMLDivElement[];
     const inputs = boxesRef.current.filter(Boolean) as HTMLInputElement[];
+    const droplets = dropletsRef.current.filter(Boolean) as HTMLDivElement[];
 
     if (wrapper) wrapper.style.gap = `${GAP}px`;
 
     cells.forEach((cell) => {
-      gsap.set(cell, { x: 0 });
+      gsap.set(cell, { x: 0, clearProps: "all" });
       cell.style.backgroundColor = "#fff";
       cell.style.borderColor = "rgba(20,22,26,0.15)";
       cell.style.borderRadius = "12px";
     });
 
     fills.forEach((fill) => {
+      gsap.set(fill, { clearProps: "all" });
       fill.style.height = "0%";
       fill.style.opacity = "1";
     });
@@ -288,6 +381,10 @@ export function OtpForm() {
     inputs.forEach((inp) => {
       inp.style.color = "#14161a";
       inp.value = "";
+    });
+
+    droplets.forEach((d) => {
+      gsap.set(d, { opacity: 0 });
     });
 
     boxesRef.current[0]?.focus();
@@ -364,7 +461,6 @@ export function OtpForm() {
                 transition: "border-color 0.15s",
               }}
             >
-              {/* Liquid fill — rises from bottom with elastic overshoot */}
               <div
                 ref={setFillRef(i)}
                 style={{
@@ -416,7 +512,6 @@ export function OtpForm() {
             </div>
           ))}
 
-          {/* Droplets — positioned in wrapper coordinate space */}
           {Array.from({ length: BOX_COUNT - 1 }).map((_, i) => (
             <div
               key={`droplet-${i}`}

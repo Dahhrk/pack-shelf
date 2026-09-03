@@ -3,7 +3,7 @@
 // Idea: the form treats you as a stranger until proven otherwise;
 // it reacts to what you're doing, not just to submit.
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 const ACCENT = "#3b82f6";
@@ -32,6 +32,7 @@ function lidPath(
 export function AuthForm() {
   const containerRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
+  const [submitted, setSubmitted] = useState(false);
 
   const setup = useCallback(
     (container: HTMLDivElement) => {
@@ -204,6 +205,16 @@ export function AuthForm() {
         }
       }
 
+      // ROW 3: submit handler wired via DOM — indicator acknowledges
+      function onFormSubmit(e: Event) {
+        e.preventDefault();
+        closeLids();
+        settleDown();
+        setSubmitted(true);
+      }
+
+      const form = container.querySelector<HTMLFormElement>("#auth-form")!;
+
       document.addEventListener("mousemove", onMouseMoveGlobal);
       emailInput.addEventListener("input", onEmailInput);
       emailInput.addEventListener("focus", onEmailFocus);
@@ -212,6 +223,7 @@ export function AuthForm() {
       passInput.addEventListener("focus", onPassFocus);
       passInput.addEventListener("blur", onPassBlur);
       revealBtn.addEventListener("click", onRevealToggle);
+      form.addEventListener("submit", onFormSubmit);
 
       return () => {
         document.removeEventListener("mousemove", onMouseMoveGlobal);
@@ -222,6 +234,7 @@ export function AuthForm() {
         passInput.removeEventListener("focus", onPassFocus);
         passInput.removeEventListener("blur", onPassBlur);
         revealBtn.removeEventListener("click", onRevealToggle);
+        form.removeEventListener("submit", onFormSubmit);
       };
     },
     [reducedMotion],
@@ -300,8 +313,9 @@ export function AuthForm() {
         </svg>
       </div>
 
-      {/* Form — rigid container, does not animate (law 4) */}
-      <div
+      {/* ROW 3: real <form> — password inside form, Enter submits */}
+      <form
+        id="auth-form"
         style={{
           background: "#fff",
           borderRadius: 16,
@@ -420,7 +434,7 @@ export function AuthForm() {
         </div>
 
         <button
-          type="button"
+          type="submit"
           style={{
             width: "100%",
             padding: "12px 0",
@@ -440,10 +454,25 @@ export function AuthForm() {
           Sign in
         </button>
 
+        {/* ROW 3: visible demo response after submit */}
+        {submitted && (
+          <p
+            style={{
+              textAlign: "center",
+              marginTop: 12,
+              fontSize: 12,
+              color: "rgba(20,22,26,0.5)",
+              fontStyle: "italic",
+            }}
+          >
+            Signed in as a demo — no account was created.
+          </p>
+        )}
+
         <div
           style={{
             textAlign: "center",
-            marginTop: 16,
+            marginTop: submitted ? 8 : 16,
             fontSize: 13,
             color: "rgba(20,22,26,0.45)",
           }}
@@ -465,7 +494,7 @@ export function AuthForm() {
             Sign up
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
