@@ -1,0 +1,20 @@
+Chrome leak grep (live DOM at http://127.0.0.1:5173 + source on 0378ce3)
+
+LIVE DOM:
+- text-amber-600: 0 hits
+- #d9772e: 1 hit — FloatingNav active link only (class text-[#d9772e] font-bold on "React Bits" after scrolling #react-bits into view). Computed color rgb(217, 119, 46).
+- DM Sans: 0 hits in live serialized DOM (templates not mounted in chrome shell)
+- zinc-950: 11 hits — all inside Backgrounds specimen cards (bg-zinc-950 / bg-zinc-950/40 on Aurora, ParticleField, GradientMesh, DotGrid, etc.). None on App chrome / FloatingNav / section shells.
+
+Also noted (not the listed leak tokens):
+- from-amber-600 / to-orange-600 on Motion section specimen cards (gesture/layout demos) — specimen UI, not App chrome.
+
+SOURCE:
+- text-amber-600: none
+- #d9772e: only FloatingNav.tsx active state
+- DM Sans: only templates/* (Portfolio/Landing/Dashboard) — not App chrome
+- zinc-950: backgrounds/*, ProgressSteps, Playground preview — not App.tsx / FloatingNav / sections / index.css
+
+Magic UI h2: class text-[#14161a], computed rgb(20,22,26) / #14161a (ink, not amber). Font: Space Mono.
+App chrome: body font Space Mono, bg #eef0ec / rgb(238,240,236).
+NumberTicker rendered: 1, 7, 42. CountUp rendered: 3, 12, 8.
