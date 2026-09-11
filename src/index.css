@@ -19,6 +19,42 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #52525b;
+  background: #a1a1aa;
   border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /*
+   * Kill animated transforms (Motion inline styles, marquee translates,
+   * hero spring, etc.) — !important beats Motion's inline style values.
+   * Orbit items are excluded: their positioning depends on the keyframe
+   * transform, which is handled by a separate paused-animation rule.
+   */
+  *:not([data-orbit]),
+  *::before,
+  *::after {
+    transform: none !important;
+  }
+
+  /*
+   * Orbit items: freeze at their delay-computed angular position
+   * instead of collapsing to centre. The negative animation-delay
+   * offsets each icon to a distinct point on the ring; pausing the
+   * animation holds that computed keyframe transform in place.
+   * These overrides (0-1-0 specificity) beat the * (0-0-0) rules above.
+   */
+  [data-orbit] {
+    animation-play-state: paused !important;
+    animation-duration: calc(var(--duration) * 1s) !important;
+    animation-iteration-count: infinite !important;
+  }
 }

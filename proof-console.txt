@@ -1,0 +1,1 @@
+(empty capture — no console or page errors during 1440px Playwright session)
