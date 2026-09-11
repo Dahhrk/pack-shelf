@@ -31,7 +31,7 @@ export function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-emerald-400 origin-left z-50"
+      className="fixed top-0 left-0 right-0 h-1 bg-amber-400 origin-left z-50"
       style={{ scaleX }}
     />
   );
@@ -44,9 +44,10 @@ export function SpringLoader() {
       {dots.map((i) => (
         <motion.div
           key={i}
-          className="w-4 h-4 rounded-full bg-emerald-400"
+          className="w-4 h-4 rounded-full bg-amber-400"
           animate={{ y: [0, -18, 0] }}
           transition={{
+            // Loading indicator: infinite because the animation IS the demo subject
             repeat: Infinity,
             duration: 0.6,
             delay: i * 0.15,
@@ -61,8 +62,8 @@ export function SpringLoader() {
 }
 
 const cards = [
-  { id: "alpha", title: "Spring Physics", color: "from-violet-600 to-indigo-600" },
-  { id: "beta", title: "Layout Animations", color: "from-emerald-600 to-teal-600" },
+  { id: "alpha", title: "Spring Physics", color: "from-teal-600 to-cyan-600" },
+  { id: "beta", title: "Layout Animations", color: "from-teal-600 to-teal-700" },
   { id: "gamma", title: "Gesture Handlers", color: "from-amber-600 to-orange-600" },
 ];
 
@@ -97,7 +98,7 @@ export function AnimatePresenceMenu() {
   return (
     <div className="relative">
       <motion.button
-        className="px-5 py-2.5 bg-zinc-800 rounded-lg font-medium border border-zinc-700 hover:border-zinc-500 transition-colors"
+        className="px-5 py-2.5 bg-stone-800 rounded-lg font-medium border border-stone-700 hover:border-stone-500 transition-colors"
         onClick={() => setOpen(!open)}
         whileTap={{ scale: 0.95 }}
       >
@@ -111,7 +112,7 @@ export function AnimatePresenceMenu() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="mt-3 bg-zinc-800/90 backdrop-blur rounded-xl border border-zinc-700 overflow-hidden"
+            className="mt-3 bg-stone-800/90 backdrop-blur rounded-xl border border-stone-700 overflow-hidden"
           >
             {menuItems.map((item, i) => (
               <motion.li
@@ -120,7 +121,7 @@ export function AnimatePresenceMenu() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ delay: i * 0.05 }}
-                className="px-5 py-3 hover:bg-zinc-700/50 cursor-pointer border-b border-zinc-700/50 last:border-0 transition-colors"
+                className="px-5 py-3 hover:bg-stone-700/50 cursor-pointer border-b border-stone-700/50 last:border-0 transition-colors"
               >
                 {item}
               </motion.li>

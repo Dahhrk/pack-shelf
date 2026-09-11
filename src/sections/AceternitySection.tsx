@@ -16,7 +16,7 @@ const hoverCards = [
 const typewriterWords = [
   { text: "Build" },
   { text: "beautiful" },
-  { text: "animated", className: "text-emerald-400" },
+  { text: "animated", className: "text-amber-400" },
   { text: "interfaces." },
 ];
 
@@ -25,7 +25,7 @@ const bentoItems = [
     title: "Motion Runtime",
     description: "Spring physics and layout animations in one engine.",
     header: (
-      <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-violet-900/50 to-indigo-900/50 border border-violet-500/20" />
+      <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-teal-900/50 to-cyan-900/50 border border-teal-500/20" />
     ),
     className: "md:col-span-2",
   },
@@ -33,7 +33,7 @@ const bentoItems = [
     title: "Copy-Paste Kits",
     description: "Drop in pre-built components, own the source.",
     header: (
-      <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-emerald-900/50 to-teal-900/50 border border-emerald-500/20" />
+      <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-amber-900/50 to-orange-900/50 border border-amber-500/20" />
     ),
     className: "md:col-span-1",
   },
@@ -58,49 +58,45 @@ const bentoItems = [
 export function AceternitySection() {
   return (
     <section id="aceternity" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2 text-violet-400 font-mono">
+      <h2 className="text-3xl font-bold mb-2 text-orange-400 font-mono">
         03 — Aceternity UI
       </h2>
-      <p className="text-zinc-400 mb-12 max-w-xl">
+      <p className="text-stone-400 mb-12 max-w-xl">
         Free documented components from{" "}
-        <a href="https://ui.aceternity.com" className="underline text-zinc-300" target="_blank" rel="noopener noreferrer">
+        <a href="https://ui.aceternity.com" className="underline text-stone-300" target="_blank" rel="noopener noreferrer">
           ui.aceternity.com
         </a>. Expressive animated blocks for dark interfaces.
       </p>
 
       <div className="space-y-16">
-        {/* Background: Beams (contained) */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Background Beams
           </h3>
-          <div className="relative h-64 w-full rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden flex items-center justify-center">
+          <div className="relative h-64 w-full rounded-xl bg-stone-900 border border-stone-800 overflow-hidden flex items-center justify-center">
             <BackgroundBeams />
-            <p className="relative z-10 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-zinc-100 to-zinc-400">
+            <p className="relative z-10 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-stone-100 to-stone-400">
               Ambient beam trails
             </p>
           </div>
         </div>
 
-        {/* Cards: Hover Effect */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Card Hover Effect
           </h3>
           <HoverEffect items={hoverCards} />
         </div>
 
-        {/* Text: Typewriter */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Typewriter Effect
           </h3>
           <TypewriterEffect words={typewriterWords} />
         </div>
 
-        {/* Grid: Bento */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Bento Grid
           </h3>
           <BentoGrid>
@@ -116,9 +112,8 @@ export function AceternitySection() {
           </BentoGrid>
         </div>
 
-        {/* Button: Moving Border */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm font-mono text-stone-500 uppercase tracking-widest mb-4">
             Moving Border
           </h3>
           <div className="flex gap-4 flex-wrap">

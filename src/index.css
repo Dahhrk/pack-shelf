@@ -6,6 +6,19 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   min-height: 100vh;
 }
@@ -19,6 +32,15 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #52525b;
+  background: #78716c;
   border-radius: 3px;
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
+  border-radius: 4px;
 }

@@ -36,7 +36,7 @@ export function FloatingNav({
         animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
         transition={{ duration: 0.2 }}
         className={cn(
-          "flex max-w-fit fixed top-6 inset-x-0 mx-auto border border-zinc-700 rounded-full bg-zinc-900/80 backdrop-blur-md shadow-lg z-[5000] px-8 py-3 items-center justify-center space-x-4",
+          "flex max-w-fit fixed top-6 inset-x-0 mx-auto border border-stone-700 rounded-full bg-stone-900/80 backdrop-blur-md shadow-lg z-[5000] px-8 py-3 items-center justify-center space-x-4",
           className,
         )}
       >
@@ -44,7 +44,7 @@ export function FloatingNav({
           <a
             key={`nav-${idx}`}
             href={item.link}
-            className="relative text-zinc-400 hover:text-zinc-100 text-sm transition-colors"
+            className="relative text-stone-400 hover:text-stone-100 text-sm transition-colors"
           >
             {item.name}
           </a>

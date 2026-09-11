@@ -84,6 +84,46 @@ npm run build    # production build
 
 ---
 
+### 05 — App / Product UI Specimens
+
+Live interactive app-UI specimens built with Motion, Radix UI, TanStack Table, cmdk, Sonner, and Vaul.
+
+| Specimen | Description | Key Libraries |
+|---|---|---|
+| Dashboard Shell | Sidebar nav, breadcrumb, animated content swap; drawer nav at mobile | Motion, Lucide |
+| Data Table | 600 virtualized rows, column sort, column resize, row select, optimistic update | TanStack Table, TanStack Virtual, Motion |
+| Command Palette | `⌘K` open, fuzzy filter (Fuse.js), arrow nav, escape close | cmdk, Fuse.js, Motion |
+| Settings Form | Sectioned form, dirty-state tracking, animated save/undo bar | Motion |
+| Empty States | First-run, no-results, error, permission — 4 distinct variants | Motion, Lucide |
+| Overlays | Modal (focus trap), drawer (gesture dismiss), popover, toast, tooltip | Radix Dialog, Vaul, Radix Popover, Sonner, Radix Tooltip, Motion |
+| Onboarding | 3-step wizard with progress bar, back nav, coach-mark tooltips | Motion |
+
+**Interaction Patterns Demonstrated:**
+
+| Pattern | Where |
+|---|---|
+| Shared layout transitions (`layoutId`) | Tab indicator in Shared Layout Transition |
+| List reorder with drag | Drag Reorder List (Motion `Reorder`) |
+| Optimistic row update | Data Table row click feedback |
+| Skeleton to content swap | Skeleton Swap demo |
+| Scroll-linked progress | Section-scoped scroll progress bar |
+| Gesture drawer dismiss | Dashboard Shell mobile drawer + Vaul drawer |
+| Keyboard focus rings | All interactive elements (`.focus-ring` utility) |
+
+**Source:** Original — built for pack-shelf app-UI specimens on `motion/react`.
+**License:** MIT (this repo).
+
+---
+
+### 06 — Mobile / Responsive
+
+The **same** Dashboard Shell and Data Table components from section 05 rendered inside a 390px viewport constraint. No duplicate implementation.
+
+- Dashboard: switches to gesture-dismissable drawer navigation
+- Table: horizontally scrollable with compact layout
+
+---
+
 ## Skipped (paid / paywalled)
 
 No paid components are included. All components listed above were verified as free/MIT at the time of copy. Nothing from:
@@ -101,8 +141,44 @@ No paid components are included. All components listed above were verified as fr
 - [React 19](https://react.dev) — UI framework
 - [TypeScript](https://www.typescriptlang.org) — type safety
 - [Tailwind CSS 3](https://tailwindcss.com) — utility styles
-- [Motion](https://motion.dev) (Framer Motion) — animation runtime
-- [DM Sans](https://fonts.google.com/specimen/DM+Sans) + [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) — typography
+- [Motion](https://motion.dev) (Framer Motion) — animation runtime — MIT
+- [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) + [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) — typography
+
+### App UI Libraries
+
+| Library | Version | License | Use |
+|---|---|---|---|
+| [Radix UI](https://www.radix-ui.com/) | various | MIT | Dialog, Popover, Tooltip, Switch, Select primitives |
+| [TanStack Table](https://tanstack.com/table) | 8.x | MIT | Data table core |
+| [TanStack Virtual](https://tanstack.com/virtual) | 3.x | MIT | Row virtualization |
+| [cmdk](https://cmdk.paco.me/) | latest | MIT | Command palette |
+| [Sonner](https://sonner.emilkowal.ski/) | latest | MIT | Toast notifications |
+| [Vaul](https://vaul.emilkowal.ski/) | latest | MIT | Drawer overlay |
+| [Fuse.js](https://www.fusejs.io/) | latest | Apache-2.0 | Fuzzy search for command palette |
+| [Lucide React](https://lucide.dev/) | latest | ISC | Icon set |
+| [class-variance-authority](https://cva.style/) | latest | Apache-2.0 | Variant utility |
+
+## Accessibility
+
+- `prefers-reduced-motion: reduce` kills all CSS animations/transitions outright (`animation: none; transition: none`); Motion JS animations check `useReducedMotion()` and set `duration: 0` / `initial={false}`
+- All interactive elements have visible `:focus-visible` rings (`.focus-ring` CSS utility)
+- Keyboard reachable throughout: tab, arrow, escape, enter
+- Overlays trap focus and close on Escape
+- ARIA attributes on interactive widgets (tabs, switches, navigation)
+
+## Screenshots
+
+Proof screenshots are in the `/screenshots` directory:
+
+- `screenshots/01-dashboard-shell.png` — Dashboard specimen at ~1440px
+- `screenshots/02-data-table.png` — Data table at ~1440px
+- `screenshots/03-command-palette.png` — Command palette open at ~1440px
+- `screenshots/04-settings-form.png` — Settings with dirty state at ~1440px
+- `screenshots/05-empty-states.png` — Empty states at ~1440px
+- `screenshots/06-overlays.png` — Overlay specimens at ~1440px
+- `screenshots/07-onboarding.png` — Onboarding flow at ~1440px
+- `screenshots/08-interactions.png` — Interaction patterns at ~1440px
+- `screenshots/09-mobile-390px.png` — Mobile responsive at 390px
 
 ## License
 
