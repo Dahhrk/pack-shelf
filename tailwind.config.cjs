@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"DM Sans"', "system-ui", "sans-serif"],
+        sans: ['"Space Mono"', "monospace"],
         mono: ['"JetBrains Mono"', "monospace"],
       },
       animation: {

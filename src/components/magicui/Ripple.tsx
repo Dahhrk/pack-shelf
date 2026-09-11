@@ -21,7 +21,7 @@ export function Ripple({
   return (
     <div
       className={cn(
-        "absolute inset-0 flex items-center justify-center bg-zinc-950/5 [mask-image:linear-gradient(to_bottom,white,transparent)]",
+        "absolute inset-0 flex items-center justify-center bg-white/50 [mask-image:linear-gradient(to_bottom,white,transparent)]",
         className,
       )}
     >

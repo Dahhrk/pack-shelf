@@ -6,6 +6,7 @@
 import { useRef } from "react";
 import { motion, useAnimationFrame } from "motion/react";
 import { cn } from "../../lib/utils";
+import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 export function MovingBorder({
   children,
@@ -35,7 +36,7 @@ export function MovingBorder({
       </div>
       <div
         className={cn(
-          "relative flex h-full w-full items-center justify-center bg-zinc-950 text-sm antialiased backdrop-blur-xl",
+          "relative flex h-full w-full items-center justify-center bg-white text-sm antialiased backdrop-blur-xl",
           className,
         )}
         style={{ borderRadius: "999px" }}
@@ -54,26 +55,6 @@ function MovingGradient({
   borderClassName?: string;
 }) {
   const pathRef = useRef<SVGRectElement>(null);
-  const progress = useRef(0);
-
-  useAnimationFrame((time) => {
-    const length = pathRef.current?.getTotalLength();
-    if (length) {
-      const pxPerMs = length / duration;
-      progress.current += pxPerMs * 16.67;
-      const point = pathRef.current?.getPointAtLength(
-        progress.current % length,
-      );
-      if (point) {
-        const x = point.x;
-        const y = point.y;
-        const transform = `translateX(${x - 100}px) translateY(${y - 100}px)`;
-        (pathRef.current?.closest("div")?.querySelector(".motion-gradient") as HTMLElement)?.style &&
-          ((document.querySelector(`[data-gradient-${Math.floor(duration)}]`) as HTMLElement));
-        // Using a simpler approach with CSS animation
-      }
-    }
-  });
 
   return (
     <svg
@@ -102,13 +83,15 @@ export function MovingBorderButton({
   children: React.ReactNode;
   className?: string;
 }) {
+  const reduced = useReducedMotion();
   const angle = useRef(0);
   const btnRef = useRef<HTMLButtonElement>(null);
 
   useAnimationFrame(() => {
+    if (reduced) return;
     angle.current = (angle.current + 1) % 360;
     if (btnRef.current) {
-      btnRef.current.style.background = `linear-gradient(${angle.current}deg, transparent 40%, rgba(52,211,153,0.3) 50%, transparent 60%), #18181b`;
+      btnRef.current.style.background = `linear-gradient(${angle.current}deg, transparent 40%, rgba(139,92,246,0.2) 50%, transparent 60%), #ffffff`;
     }
   });
 
@@ -116,11 +99,12 @@ export function MovingBorderButton({
     <motion.button
       ref={btnRef}
       className={cn(
-        "relative px-6 py-3 rounded-full text-sm font-medium text-emerald-300 border border-emerald-500/30",
+        "relative px-6 py-3 rounded-full text-sm font-medium text-violet-700 border border-violet-400/30",
         className,
       )}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      style={reduced ? { background: "#ffffff" } : undefined}
+      whileHover={reduced ? undefined : { scale: 1.05 }}
+      whileTap={reduced ? undefined : { scale: 0.95 }}
     >
       {children}
     </motion.button>

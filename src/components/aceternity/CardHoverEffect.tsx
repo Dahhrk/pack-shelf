@@ -28,7 +28,7 @@ export function HoverEffect({
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-emerald-600/[0.08] block rounded-3xl"
+                className="absolute inset-0 h-full w-full bg-[#14161a]/[0.04] block rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 0.15 } }}
@@ -39,10 +39,10 @@ export function HoverEffect({
               />
             )}
           </AnimatePresence>
-          <div className="rounded-2xl h-full w-full p-4 overflow-hidden bg-zinc-900 border border-zinc-800 group-hover:border-zinc-600 relative z-20 transition-colors">
+          <div className="rounded-2xl h-full w-full p-4 overflow-hidden bg-white border border-[#14161a]/10 group-hover:border-[#14161a]/25 relative z-20 transition-colors">
             <div className="relative z-50">
-              <h4 className="text-zinc-100 font-bold tracking-wide">{item.title}</h4>
-              <p className="mt-2 text-zinc-400 tracking-wide leading-relaxed text-sm">
+              <h4 className="text-[#14161a] font-bold tracking-wide">{item.title}</h4>
+              <p className="mt-2 text-[#14161a]/60 tracking-wide leading-relaxed text-sm">
                 {item.description}
               </p>
             </div>
