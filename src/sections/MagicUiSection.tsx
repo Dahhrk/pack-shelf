@@ -14,7 +14,7 @@ const marqueeItems = [
 export function MagicUiSection() {
   return (
     <section id="magic-ui" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2 text-amber-600">
+      <h2 className="text-3xl font-bold mb-2 text-[#14161a]">
         02 — Magic UI
       </h2>
       <p className="text-[#14161a]/60 mb-12 max-w-xl">
@@ -36,7 +36,7 @@ export function MagicUiSection() {
                 key={item}
                 className="mx-4 flex items-center gap-2 rounded-xl border border-[#14161a]/10 bg-white px-5 py-3 text-sm"
               >
-                <span className="text-amber-600">✦</span>
+                <span className="text-[#14161a]/40">✦</span>
                 <span>{item}</span>
               </div>
             ))}
@@ -47,7 +47,7 @@ export function MagicUiSection() {
                 key={item}
                 className="mx-4 flex items-center gap-2 rounded-xl border border-[#14161a]/10 bg-white px-5 py-3 text-sm"
               >
-                <span className="text-amber-600">◆</span>
+                <span className="text-[#14161a]/40">◆</span>
                 <span>{item}</span>
               </div>
             ))}
