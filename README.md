@@ -84,7 +84,24 @@ npm run build    # production build
 
 ---
 
-### 05 — Backgrounds (original)
+
+### 05 — Raw, no dependency
+
+| Component | Type | Animation | Description |
+|---|---|---|---|
+| Auth — Attentive Form | Form | Vanilla CSS/JS | The form treats you as a stranger until proven otherwise; it reacts to what you're doing, not just to submit. An attentive indicator tracks cursor/caret position, rises on field focus with overshoot, and peeks on password reveal — all hand-written CSS transitions and plain JS DOM manipulation. |
+| OTP — Converging Digits | Form | GSAP | The digits converge into one shape when complete; the six-box grid is temporary, not the point. Each box fills with liquid-style elastic overshoot (~0.4s), a droplet fires to hand focus to the next box (~0.2s), and on completion boxes slide together and merge into one pill shape via `gsap.timeline()`. |
+
+**Intentionally dependency-free (Auth):** No `motion/react`, no animation library — vanilla CSS transitions/keyframes and plain JS DOM manipulation (`element.style`, `classList`, requestAnimationFrame).
+
+**GSAP-based (OTP):** Uses [GSAP](https://gsap.com) with explicit `gsap.timeline()` calls and deliberate stagger/duration math. GSAP is free for commercial use (post-Webflow acquisition, April 2025); the only restriction is building a competing no-code animation tool, which does not apply here. See the [GSAP license FAQ](https://gsap.com/community/licensing/).
+
+**Source:** Original — written from scratch. Ideas sourced from @settigation reference vocabulary.
+**License:** MIT (this repo).
+
+---
+
+### 06 — Backgrounds (original)
 
 | Component | Type | Description |
 |---|---|---|
@@ -100,7 +117,7 @@ npm run build    # production build
 
 ---
 
-### 06 — Gestures (original)
+### 07 — Gestures (original)
 
 | Component | Type | Description |
 |---|---|---|
@@ -114,7 +131,7 @@ npm run build    # production build
 
 ---
 
-### 07 — Feedback (original)
+### 08 — Feedback (original)
 
 | Component | Type | Description |
 |---|---|---|
@@ -128,7 +145,7 @@ npm run build    # production build
 
 ---
 
-### 08 — Navigation (original)
+### 09 — Navigation (original)
 
 | Component | Type | Description |
 |---|---|---|
@@ -141,7 +158,7 @@ npm run build    # production build
 
 ---
 
-### 09 — Data Viz (original)
+### 10 — Data Viz (original)
 
 | Component | Type | Description |
 |---|---|---|
@@ -156,7 +173,7 @@ npm run build    # production build
 
 ---
 
-### 10 — Page Transitions (original)
+### 11 — Page Transitions (original)
 
 | Component | Type | Description |
 |---|---|---|
@@ -171,7 +188,7 @@ npm run build    # production build
 
 ---
 
-### 11 — Playground
+### 12 — Playground
 
 Interactive live playground with sliders, toggles, and selects to tune animation parameters in real-time. Includes 4 pre-built instances:
 
@@ -184,7 +201,7 @@ Interactive live playground with sliders, toggles, and selects to tune animation
 
 ---
 
-### 12 — Site Templates
+### 13 — Site Templates
 
 Full-page site templates composing shelf components into real layouts:
 
@@ -211,6 +228,7 @@ No paid components are included. All components listed above were verified as fr
 - [TypeScript](https://www.typescriptlang.org) — type safety
 - [Tailwind CSS 3](https://tailwindcss.com) — utility styles
 - [Motion](https://motion.dev) (Framer Motion) — animation runtime
+- [GSAP](https://gsap.com) — timeline animation (Raw lane OTP specimen; free for commercial use post-Webflow acquisition)
 - [Space Mono](https://fonts.google.com/specimen/Space+Mono) + [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) — typography
 
 ## License

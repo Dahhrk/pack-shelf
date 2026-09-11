@@ -4,6 +4,7 @@ import { MotionSection } from "./sections/MotionSection";
 import { MagicUiSection } from "./sections/MagicUiSection";
 import { AceternitySection } from "./sections/AceternitySection";
 import { ReactBitsSection } from "./sections/ReactBitsSection";
+import { RawSection } from "./sections/RawSection";
 import { BackgroundsSection } from "./sections/BackgroundsSection";
 import { GesturesSection } from "./sections/GesturesSection";
 import { FeedbackSection } from "./sections/FeedbackSection";
@@ -19,6 +20,7 @@ const navItems = [
   { name: "Magic UI", link: "#magic-ui" },
   { name: "Aceternity", link: "#aceternity" },
   { name: "React Bits", link: "#react-bits" },
+  { name: "Raw", link: "#raw" },
   { name: "Backgrounds", link: "#backgrounds" },
   { name: "Gestures", link: "#gestures" },
   { name: "Feedback", link: "#feedback" },
@@ -88,6 +90,9 @@ export default function App() {
 
       <div className="border-t border-[#14161a]/10" />
       <ReactBitsSection />
+
+      <div className="border-t border-[#14161a]/10" />
+      <RawSection />
 
       <div className="border-t border-[#14161a]/10" />
       <BackgroundsSection />
