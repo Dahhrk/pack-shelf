@@ -14,12 +14,12 @@ const marqueeItems = [
 export function MagicUiSection() {
   return (
     <section id="magic-ui" className="py-20 px-6 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2 text-amber-400 font-mono">
+      <h2 className="text-3xl font-bold mb-2 text-amber-600">
         02 — Magic UI
       </h2>
-      <p className="text-zinc-400 mb-12 max-w-xl">
+      <p className="text-[#14161a]/60 mb-12 max-w-xl">
         Free / MIT components from{" "}
-        <a href="https://magicui.design" className="underline text-zinc-300" target="_blank" rel="noopener noreferrer">
+        <a href="https://magicui.design" className="underline text-[#14161a]/80" target="_blank" rel="noopener noreferrer">
           magicui.design
         </a>. Copy-paste animated building blocks.
       </p>
@@ -27,16 +27,16 @@ export function MagicUiSection() {
       <div className="space-y-16">
         {/* Text: Marquee */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Marquee
           </h3>
           <Marquee pauseOnHover className="[--duration:20s]">
             {marqueeItems.map((item) => (
               <div
                 key={item}
-                className="mx-4 flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900 px-5 py-3 text-sm"
+                className="mx-4 flex items-center gap-2 rounded-xl border border-[#14161a]/10 bg-white px-5 py-3 text-sm"
               >
-                <span className="text-amber-400">✦</span>
+                <span className="text-amber-600">✦</span>
                 <span>{item}</span>
               </div>
             ))}
@@ -45,9 +45,9 @@ export function MagicUiSection() {
             {marqueeItems.map((item) => (
               <div
                 key={item}
-                className="mx-4 flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900 px-5 py-3 text-sm"
+                className="mx-4 flex items-center gap-2 rounded-xl border border-[#14161a]/10 bg-white px-5 py-3 text-sm"
               >
-                <span className="text-amber-400">◆</span>
+                <span className="text-amber-600">◆</span>
                 <span>{item}</span>
               </div>
             ))}
@@ -56,12 +56,12 @@ export function MagicUiSection() {
 
         {/* Card: Border Beam */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Border Beam
           </h3>
-          <div className="relative rounded-xl bg-zinc-900 border border-zinc-800 p-8 max-w-md">
+          <div className="relative rounded-xl bg-white border border-[#14161a]/10 p-8 max-w-md">
             <h4 className="text-lg font-semibold mb-2">Animated Border</h4>
-            <p className="text-zinc-400 text-sm">
+            <p className="text-[#14161a]/60 text-sm">
               A glowing beam animates around the card border using CSS offset-path.
             </p>
             <BorderBeam size={250} duration={12} delay={3} />
@@ -70,7 +70,7 @@ export function MagicUiSection() {
 
         {/* Text: Blur Fade */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Blur Fade
           </h3>
           <div className="space-y-4">
@@ -84,28 +84,31 @@ export function MagicUiSection() {
           </div>
         </div>
 
-        {/* Numbers: Number Ticker */}
+        {/* Numbers: Number Ticker — demo targets, not real metrics */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Number Ticker
           </h3>
+          <p className="text-xs text-[#14161a]/40 mb-3">
+            Demo animation targets — not real metrics.
+          </p>
           <div className="flex gap-12 items-end">
             <div>
-              <span className="text-xs text-zinc-500 uppercase tracking-wider">Components</span>
+              <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">Value A</span>
               <div className="text-5xl font-bold">
-                <NumberTicker value={142} />
+                <NumberTicker value={1} />
               </div>
             </div>
             <div>
-              <span className="text-xs text-zinc-500 uppercase tracking-wider">Downloads</span>
+              <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">Value B</span>
               <div className="text-5xl font-bold">
-                <NumberTicker value={89430} />
+                <NumberTicker value={7} />
               </div>
             </div>
             <div>
-              <span className="text-xs text-zinc-500 uppercase tracking-wider">Stars</span>
+              <span className="text-xs text-[#14161a]/40 uppercase tracking-wider">Value C</span>
               <div className="text-5xl font-bold">
-                <NumberTicker value={5200} />
+                <NumberTicker value={42} />
               </div>
             </div>
           </div>
@@ -113,7 +116,7 @@ export function MagicUiSection() {
 
         {/* Button: Shiny */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Shiny Button
           </h3>
           <div className="flex gap-4">
@@ -124,36 +127,36 @@ export function MagicUiSection() {
 
         {/* Loader / background: Ripple */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Ripple
           </h3>
-          <div className="relative h-48 w-full rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden">
+          <div className="relative h-48 w-full rounded-xl bg-white border border-[#14161a]/10 overflow-hidden">
             <Ripple />
           </div>
         </div>
 
         {/* Orbit: Orbiting Circles */}
         <div>
-          <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">
+          <h3 className="text-sm text-[#14161a]/40 uppercase tracking-widest mb-4">
             Orbiting Circles
           </h3>
-          <div className="relative flex h-[400px] w-full flex-col items-center justify-center overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800">
-            <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-zinc-100 to-zinc-400 bg-clip-text text-center text-5xl font-semibold leading-none text-transparent">
+          <div className="relative flex h-[400px] w-full flex-col items-center justify-center overflow-hidden rounded-xl bg-white border border-[#14161a]/10">
+            <span className="pointer-events-none whitespace-pre-wrap text-center text-5xl font-semibold leading-none text-[#14161a]/20">
               Orbit
             </span>
-            <OrbitingCircles radius={80} duration={20}>
+            <OrbitingCircles radius={80} duration={20} delay={0}>
               <span className="text-2xl">⚛️</span>
             </OrbitingCircles>
             <OrbitingCircles radius={80} duration={20} delay={10}>
               <span className="text-2xl">🎨</span>
             </OrbitingCircles>
-            <OrbitingCircles radius={140} duration={30} reverse>
+            <OrbitingCircles radius={140} duration={30} delay={0} reverse>
               <span className="text-2xl">✨</span>
             </OrbitingCircles>
             <OrbitingCircles radius={140} duration={30} delay={15} reverse>
               <span className="text-2xl">🚀</span>
             </OrbitingCircles>
-            <OrbitingCircles radius={200} duration={40}>
+            <OrbitingCircles radius={200} duration={40} delay={0}>
               <span className="text-2xl">📦</span>
             </OrbitingCircles>
             <OrbitingCircles radius={200} duration={40} delay={20}>
