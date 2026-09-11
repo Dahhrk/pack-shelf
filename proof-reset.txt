@@ -1,0 +1,40 @@
+=== proof-reset.txt: reset-mid-merge acceptance proof ===
+
+Step 1: Type 6 digits to trigger merge
+Step 2: 100ms after last digit — merge scheduled at 200ms, calling reset #1
+State after reset #1 (wrapperGap=10px):
+  cell 0: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgb(16, 185, 129) digit="" color=rgb(20, 22, 26)
+  cell 1: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgba(20, 22, 26, 0.15) digit="" color=rgb(20, 22, 26)
+  cell 2: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgba(20, 22, 26, 0.15) digit="" color=rgb(20, 22, 26)
+  cell 3: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgba(20, 22, 26, 0.15) digit="" color=rgb(20, 22, 26)
+  cell 4: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgba(20, 22, 26, 0.15) digit="" color=rgb(20, 22, 26)
+  cell 5: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgba(20, 22, 26, 0.15) digit="" color=rgb(20, 22, 26)
+
+Step 3: Calling reset #2 immediately
+State after reset #2 (wrapperGap=10px):
+  cell 0: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgb(16, 185, 129) digit="" color=rgb(20, 22, 26)
+  cell 1: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgba(20, 22, 26, 0.15) digit="" color=rgb(20, 22, 26)
+  cell 2: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgba(20, 22, 26, 0.15) digit="" color=rgb(20, 22, 26)
+  cell 3: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgba(20, 22, 26, 0.15) digit="" color=rgb(20, 22, 26)
+  cell 4: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgba(20, 22, 26, 0.15) digit="" color=rgb(20, 22, 26)
+  cell 5: fill=0% opacity=1 bg=rgb(255, 255, 255) radius=12px border=rgba(20, 22, 26, 0.15) digit="" color=rgb(20, 22, 26)
+
+Step 4: Wait 500ms — verify no late pill morph
+State 500ms after resets (wrapperGap=10px):
+  cell 0: fill=0% bg=rgb(255, 255, 255) radius=12px digit=""
+  cell 1: fill=0% bg=rgb(255, 255, 255) radius=12px digit=""
+  cell 2: fill=0% bg=rgb(255, 255, 255) radius=12px digit=""
+  cell 3: fill=0% bg=rgb(255, 255, 255) radius=12px digit=""
+  cell 4: fill=0% bg=rgb(255, 255, 255) radius=12px digit=""
+  cell 5: fill=0% bg=rgb(255, 255, 255) radius=12px digit=""
+
+Step 5: Re-enter 6 digits to verify full reusability
+State after re-entering 6 digits (wrapperGap=10px):
+  cell 0: fill=100% bg=rgb(50, 195, 147) radius=26px 2px 2px 26px digit="9"
+  cell 1: fill=100% bg=rgb(50, 195, 147) radius=2px digit="8"
+  cell 2: fill=100% bg=rgb(50, 195, 147) radius=2px digit="7"
+  cell 3: fill=100% bg=rgb(50, 195, 147) radius=2px digit="6"
+  cell 4: fill=100% bg=rgb(50, 195, 147) radius=2px digit="5"
+  cell 5: fill=100% bg=rgb(50, 195, 147) radius=2px 26px 26px 2px digit="4"
+
+=== END proof-reset.txt ===
