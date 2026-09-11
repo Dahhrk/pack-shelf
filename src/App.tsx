@@ -1,4 +1,3 @@
-import { useReducedMotion } from "./hooks/useReducedMotion";
 import { motion } from "motion/react";
 import { MotionSection } from "./sections/MotionSection";
 import { MagicUiSection } from "./sections/MagicUiSection";
@@ -30,30 +29,27 @@ const navItems = [
 ];
 
 export default function App() {
-  const prefersReduced = useReducedMotion();
-
   return (
-    <div className="min-h-screen bg-[#eef0ec] text-[#14161a]">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <FloatingNav navItems={navItems} />
 
       <header className="pt-32 pb-16 px-6 max-w-6xl mx-auto text-center">
         <motion.h1
-          className="text-5xl sm:text-7xl font-bold tracking-tight text-[#14161a]"
-          initial={prefersReduced ? false : { opacity: 0, y: 30 }}
+          className="text-5xl sm:text-7xl font-bold tracking-tight"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={
-            prefersReduced
-              ? { duration: 0 }
-              : { type: "spring", stiffness: 80, damping: 20 }
-          }
+          transition={{ type: "spring", stiffness: 80, damping: 20 }}
         >
-          Pack Shelf
+          Pack{" "}
+          <span className="bg-gradient-to-r from-emerald-400 via-amber-400 to-rose-400 bg-clip-text text-transparent">
+            Shelf
+          </span>
         </motion.h1>
         <motion.p
-          className="mt-4 text-lg text-[#14161a]/60 max-w-2xl mx-auto"
-          initial={prefersReduced ? false : { opacity: 0 }}
+          className="mt-4 text-lg text-zinc-400 max-w-2xl mx-auto"
+          initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={prefersReduced ? { duration: 0 } : { delay: 0.3 }}
+          transition={{ delay: 0.3 }}
         >
           Freelancer animation lab — {navItems.length} sections, 50+
           components, 3 site templates, and a live playground. All MIT.
@@ -61,15 +57,15 @@ export default function App() {
 
         <motion.nav
           className="mt-10 flex justify-center gap-2 flex-wrap"
-          initial={prefersReduced ? false : { opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={prefersReduced ? { duration: 0 } : { delay: 0.5 }}
+          transition={{ delay: 0.5 }}
         >
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.link}
-              className="px-3 py-1.5 text-sm rounded-full border border-[#14161a]/15 hover:border-[#14161a]/30 bg-white/50 hover:bg-white/80 transition-colors"
+              className="px-3 py-1.5 text-sm rounded-full border border-zinc-800 hover:border-zinc-600 bg-zinc-900/50 hover:bg-zinc-800/50 transition-colors"
             >
               {item.name}
             </a>
@@ -77,49 +73,49 @@ export default function App() {
         </motion.nav>
       </header>
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <MotionSection />
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <MagicUiSection />
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <AceternitySection />
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <ReactBitsSection />
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <BackgroundsSection />
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <GesturesSection />
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <FeedbackSection />
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <NavigationSection />
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <DataVizSection />
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <TransitionsSection />
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <PlaygroundSection />
 
-      <div className="border-t border-[#14161a]/10" />
+      <div className="border-t border-zinc-800/50" />
       <TemplatesSection />
 
-      <footer className="py-16 px-6 text-center border-t border-[#14161a]/10">
-        <p className="text-[#14161a]/50 text-sm">
+      <footer className="py-16 px-6 text-center border-t border-zinc-800/50">
+        <p className="text-zinc-500 text-sm">
           Pack Shelf — freelancer animation lab. {navItems.length} sections,
           50+ components.{" "}
           <a
             href="https://github.com/Dahhrk/pack-shelf"
-            className="text-[#14161a]/70 underline"
+            className="text-zinc-400 underline"
             target="_blank"
             rel="noopener noreferrer"
           >
